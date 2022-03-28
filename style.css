@@ -1,4 +1,4 @@
-body {
+/* body {
   background-color: #1a68d3;
   background-image: radial-gradient(ellipse at bottom,#1a68d3 5%,transparent 60%),
       linear-gradient(136deg,transparent,#71c7ee 290%),
@@ -9,5 +9,48 @@ body {
       radial-gradient(ellipse at 5% 340%,transparent 80%,#bfc2f4 0);
   background-repeat: no-repeat;
   height: 1600px;
+} */
+
+body,html {
+  height: 100%;
+}
+/* Color of the links BEFORE scroll */
+.navbar-scroll .nav-link,
+.navbar-scroll .navbar-toggler-icon,
+.navbar-scroll .navbar-brand {
+  color: #fff;
 }
 
+/* Color of the navbar AFTER scroll */
+.navbar-scroll,
+.navbar-scrolled {
+  background-color: #cbbcb1;
+}
+
+.mask-custom {
+  backdrop-filter: blur(5px);
+  background-color: rgba(255, 255, 255, .15);
+}
+
+.navbar-brand {
+  font-size: 1.75rem;
+  letter-spacing: 3px;
+}
+
+button.navbar-toggler {
+  border: 0;
+}
+
+.navbar-toggler:hover {
+  box-shadow: none;
+  border:0;
+}
+
+.bg-image {
+  background-image: url(images/bg2.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100vh;
+}
