@@ -42,8 +42,16 @@ body {
 
 button.navbar-toggler {
   border: none;
+<<<<<<< HEAD
   box-shadow:none;
   outline: 0;
+=======
+  outline:none;
+}
+
+.navbar-toggler:hover {
+  border:0;
+>>>>>>> 61e5234de9904943a2a61b6301ebb8139a299b92
 }
 
 .bg-image {
