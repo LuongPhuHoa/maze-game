@@ -38,7 +38,8 @@ body,html {
 }
 
 button.navbar-toggler {
-  border: 0;
+  border: none;
+  outline:none;
 }
 
 .navbar-toggler:hover {
