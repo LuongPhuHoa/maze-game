@@ -43,7 +43,6 @@ button.navbar-toggler {
 }
 
 .navbar-toggler:hover {
-  box-shadow: none;
   border:0;
 }
 
