@@ -11,9 +11,12 @@
   height: 1600px;
 } */
 
-body,html {
-  height: 100%;
+body {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
 }
+
 /* Color of the links BEFORE scroll */
 .navbar-scroll .nav-link,
 .navbar-scroll .navbar-toggler-icon,
@@ -38,19 +41,18 @@ body,html {
 }
 
 button.navbar-toggler {
-  border: 0;
-}
-
-.navbar-toggler:hover {
-  box-shadow: none;
-  border:0;
+  border: none;
+  box-shadow:none;
+  outline: 0;
 }
 
 .bg-image {
   background-image: url(images/bg2.jpg);
   background-size: cover;
-  background-position: center;
+  /* background-position: center; */
   background-repeat: no-repeat;
   background-attachment: fixed;
   height: 100vh;
 }
+
+
