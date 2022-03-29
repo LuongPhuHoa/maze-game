@@ -360,37 +360,6 @@ class Maze {
             this.movePlayer(event);
             this.checkGoal();
         });
-
-    }
-    /*
-     * Adds mouse down listeners to buttons
-     */
-    buttonListeners() {
-        let up = document.getElementById('up');
-        let left = document.getElementById('left');
-        let down = document.getElementById('down')
-        let right = document.getElementById('right');
-
-        // the sprite is out of date
-        let obj = this;
-        up.addEventListener('mousedown', function () {
-
-            obj.moveUp();
-            obj.checkGoal();
-        });
-        down.addEventListener('mousedown', function () {
-            obj.moveDown();
-            obj.checkGoal();
-        });
-        left.addEventListener('mousedown', function () {
-            obj.moveLeft();
-            obj.checkGoal();
-        });
-        right.addEventListener('mousedown', function () {
-            obj.moveRight();
-            obj.checkGoal();
-        });
-
     }
 
     /*
@@ -438,13 +407,11 @@ class Maze {
 
     }
     /*
-     *  Add keyboard, button, and maze tap listeners
+     *  Add movement listeners
      */
-    addListeners() {
+    addMovementListeners() {
 
         this.keyboardListener();
-
-        this.buttonListeners();
 
         // changing levels
         this.addMazeListener();
@@ -459,8 +426,22 @@ function createGame(context) {
         // encapsulate for multi-level
         myGame.placeLevel();
 
+        // add movement listeners
+        myGame.addMovementListeners();
+
+    }
+}
+
+function createGame(context) {
+    context.init = function () {
+
+        let myGame = new Maze('game-container-1', levels[0]);
+
+        // encapsulate for multi-level
+        myGame.placeLevel();
+
         // add listeners
-        myGame.addListeners();
+        myGame.addMovementListeners();
 
     }
 }
