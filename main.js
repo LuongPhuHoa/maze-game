@@ -5,24 +5,35 @@ createGame(app);
 let levels = [];
 levels[0] = {
     map: [
-        [1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0],
-        [1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1],
-        [0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0],
-        [0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0],
-        [0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0],
-        [0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1],
-        [1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1],
-        [0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0]
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+        [0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0],
+        [0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0],
+        [0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0],
+        [0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0],
+        [0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1],
+        [0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0],
+        [1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0],
+        [0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0],
+        [0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0],
+        [0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0],
+        [1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+        [0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0],
+        [0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1],
+        [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+        [0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0],
+        [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+        [1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0],
+        [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
     ],
     player: {
         x: 0,
-        y: 8
+        y: 0
     },
     goal: {
-        x: 2,
-        y: 8
+        x: 18,
+        y: 18
     },
+    items: [{x: 2,y: 6},{x: 2,y: 4}],
     theme: 'default',
 };
 
@@ -36,7 +47,7 @@ class Maze {
 
         // establish the basic properties common to all this objects.
         this.tileTypes = ['floor', 'wall'];
-        this.tileDim = 45;
+        this.tileDim = 30;
         // inherit the level's properties: map, player start, goal start.
         this.map = level.map;
 
@@ -49,8 +60,11 @@ class Maze {
         // create a property for the DOM element, to be set later.
         this.player.el = null;
 
+        this.items =  level.items ;
+
         // make a copy of the goal.
         this.goal = { ...level.goal };
+
     }
 
     createEl(x, y, type) {
@@ -119,7 +133,33 @@ class Maze {
         // reuse the createTile function
         let sprite = this.createEl(x, y, type);
 
-        sprite.id = type;
+        //sprite.id = type;
+
+        // set the border radius of the sprite.
+        sprite.style.borderRadius = this.tileDim + 'px';
+
+        // get half the difference between tile and sprite.
+
+        // grab the layer
+        let layer = this.el.querySelector('#sprites');
+
+        layer.appendChild(sprite);
+
+        return sprite;
+    }
+
+    
+    placeMultiSprite(type, ind) {
+
+        // syntactic sugar
+        let x = this[type][ind].x
+
+        let y = this[type][ind].y;
+
+        // reuse the createTile function
+        let sprite = this.createEl(x, y, type);
+
+        //sprite.id = type;
 
         // set the border radius of the sprite.
         sprite.style.borderRadius = this.tileDim + 'px';
@@ -396,6 +436,10 @@ class Maze {
         this.populateMap();
 
         this.sizeUp();
+
+        for (let i = 0; i < this.items.length; i++) {
+            this.placeMultiSprite('items', i);
+        }
 
         this.placeSprite('goal');
 

@@ -178,7 +178,7 @@ div.layer div {
 .grassland .wall {
   background-color: #806d51;
 }
-.grassland #player {
+.grassland .player {
  background-color: #b2ccec;
 }
 
@@ -191,7 +191,7 @@ div.layer div {
 .dungeon .wall {
   background-color: #9c649c;
 }
-.dungeon #player {
+.dungeon .player {
  background-color: #ab1431;
 }
 /*
@@ -225,6 +225,9 @@ div.layer div {
   animation-iteration-count: infinite;
   transition: background-color 0.2s;
   
+}
+.items {
+  background-color: #05ffc1;
 }
 
 /* 
