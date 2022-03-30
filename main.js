@@ -379,9 +379,9 @@ class Maze {
             let layers = obj.el.querySelectorAll('.layer');
 
             // clear tiles and sprites from layers
-            for (layer of layers) {
+            layers.forEach(layer => {
                 layer.innerHTML = '';
-            }
+            });
 
             // place the new level.
             obj.placeLevel();
