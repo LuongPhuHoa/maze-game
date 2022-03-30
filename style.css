@@ -441,3 +441,7 @@ h1 span:nth-child(16) {
       0 50px 25px rgba(0, 0, 0, 0.2);
   }
 }
+
+.main-section{
+  height:300px;
+}
