@@ -33,10 +33,36 @@ levels[0] = {
         x: 18,
         y: 18
     },
-    items: [{x: 2,y: 6},{x: 2,y: 4}],
+    items: [{x: 2,y: 6},{x: 2,y: 4}, {x: 10,y: 4}],
     theme: 'default',
 };
 
+levels[1] = {
+    map: [
+        [0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0],
+        [1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1],
+        [0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0],
+        [0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0],
+        [0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0],
+        [0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1],
+        [1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1],
+        [0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1]
+    ],
+    player: {
+        x: 0,
+        y: 5
+    },
+    goal: {
+        x: 12,
+        y: 2
+    },
+    items: [{x: 2,y: 6},{x: 2,y: 4}],
+    theme: 'grassland',
+}
+let effectArea = document.querySelector('#effect-area');
+let effectItem = document.querySelector('#effect-item');
+let testBtn = document.querySelector('#test-effect');
 class Maze {
     constructor(id, level) {
 
@@ -47,7 +73,7 @@ class Maze {
 
         // establish the basic properties common to all this objects.
         this.tileTypes = ['floor', 'wall'];
-        this.tileDim = 30;
+        this.tileDim = 20;
         // inherit the level's properties: map, player start, goal start.
         this.map = level.map;
 
@@ -307,6 +333,31 @@ class Maze {
                 break;
         }
     }
+    randomItem(){
+        switch (2){//Math.floor(Math.random() * 3)){
+            case 0:
+                effectArea.classList.add('vfx-flashbang');
+                break;
+            case 1:
+                effectArea.classList.add('vfx-spook');
+                break;
+            case 2:
+                //effectItem.
+                effectItem.classList.add('vfx-nade');
+                break;
+        }
+    }
+    /*
+     * Check on whether item has been reached.
+     */
+    checkItems() {
+        for(let i = 0; i < this.items.length;i++){
+            if (this.player.y == this.items[i].y &&
+                this.player.x == this.items[i].x) {
+                this.randomItem();
+            }
+        };
+    }
     /*
      * Check on whether goal has been reached.
      */
@@ -320,8 +371,10 @@ class Maze {
         }
         else {
             body.className = '';
+            this.checkItems();
         }
     }
+
     /*
      * Changes the level of the game object.
      */
@@ -379,9 +432,11 @@ class Maze {
             let layers = obj.el.querySelectorAll('.layer');
 
             // clear tiles and sprites from layers
-            for (layer of layers) {
-                layer.innerHTML = '';
-            }
+            layers.forEach(layer => {
+                if(layer.id != 'effect-area'){
+                    layer.innerHTML = '';
+                }
+            });
 
             // place the new level.
             obj.placeLevel();
@@ -399,6 +454,7 @@ class Maze {
         document.addEventListener('keydown', event => {
             this.movePlayer(event);
             this.checkGoal();
+            CenterLightSource();
         });
     }
 
@@ -494,24 +550,23 @@ function createGame(context) {
 *  Effect for player/item
 */
 function CenterLightSource(){
-    let highlightPos = document.querySelector('.playerVfx').getBoundingClientRect();
+    let playerPos = document.querySelector('.player').getBoundingClientRect();
 
-    $('#mpg-flashlight').offset({
-        top: highlightPos.top + window.scrollX - 2050,
-        left: highlightPos.left + window.scrollY - 2050
+    $('.mpg-flashlight').offset({
+        top: playerPos.top + window.scrollX - 493,
+        left: playerPos.left + window.scrollY - 493
     });
-    $('#mpg-memory').offset({
-        top: highlightPos.top + window.scrollX - 50,
-        left: highlightPos.left + window.scrollY - 50
+    $('.mpg-memory').offset({
+        top: playerPos.top + window.scrollX- 93,
+        left: playerPos.left + window.scrollY- 93
     });
-    $('#vfx-nade').offset({
-        top: highlightPos.top + window.scrollX - 50,
-        left: highlightPos.left + window.scrollY - 50
+    $('.vfx-nade').offset({
+        top: playerPos.top + window.scrollX - 50 ,
+        left: playerPos.left + window.scrollY - 50
     });
 }
 
-let effectArea = document.querySelector('#effect-area')
-let testBtn = document.querySelector('#test-effect')
+
 
 // reposistion vfx when resize
 window.addEventListener("resize", CenterLightSource);
@@ -520,11 +575,11 @@ effectArea.addEventListener("animationend", function() {
     console.log("vfx class cleared");
     effectArea.classList.remove('vfx-flashbang');
     effectArea.classList.remove('vfx-spook');
-    effectArea.classList.remove('vfx-nade');
+    effectItem.classList.remove('vfx-nade');
 }, false);
 //debug btn
 testBtn.addEventListener('click', function() {
-    effectArea.classList.add('vfx-spook');
+    effectItem.classList.add('mpg-flashlight');
 })
 
 app.init();
