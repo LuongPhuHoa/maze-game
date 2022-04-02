@@ -549,7 +549,7 @@ function createGame(context) {
 }
 
 /*
-*  Effect for player/item
+*  make the player's effect follow the player coord on the maze
 */
 function CenterPlayerEffect(){
     let playerPos = document.querySelector('.player');
@@ -566,7 +566,9 @@ function CenterPlayerEffect(){
     }
 
 }
-
+/*
+*  make the items's effect follow the items coord on the maze
+*/
 function CenterItemEffect(){
     let playerPos = document.querySelector('.player');
     if(effectItem.classList.contains('vfx-nade'))
@@ -576,9 +578,9 @@ function CenterItemEffect(){
     }
 }
 
-// reposistion vfx when resize
+// add listener to player/item effect when window resized
 window.addEventListener("resize", CenterPlayerEffect);
-// remove item vfx when its end 
+// remove item effect when its end 
 effectArea.addEventListener("animationend", function() {
     console.log("vfx class cleared");
     effectArea.classList.remove('vfx-flashbang');
