@@ -62,6 +62,7 @@ levels[1] = {
 }
 let effectArea = document.querySelector('#effect-area');
 let effectItem = document.querySelector('#effect-item');
+let effectPlayer = document.querySelector('#effect-player');
 let testBtn = document.querySelector('#test-effect');
 class Maze {
     constructor(id, level) {
@@ -205,11 +206,13 @@ class Maze {
      */
     collide() {
         this.player.el.className += ' collide';
+        effectPlayer.classList.add('collide');
 
         let obj = this;
 
         window.setTimeout(function () {
             obj.player.el.className = 'player';
+            effectPlayer.classList.remove('collide');
         }, 200);
 
         return 0;
@@ -334,7 +337,7 @@ class Maze {
         }
     }
     randomItem(){
-        switch (2){//Math.floor(Math.random() * 3)){
+        switch (Math.floor(Math.random() * 3)){
             case 0:
                 effectArea.classList.add('vfx-flashbang');
                 break;
@@ -355,6 +358,7 @@ class Maze {
             if (this.player.y == this.items[i].y &&
                 this.player.x == this.items[i].x) {
                 this.randomItem();
+                CenterItemEffect()
             }
         };
     }
@@ -454,7 +458,7 @@ class Maze {
         document.addEventListener('keydown', event => {
             this.movePlayer(event);
             this.checkGoal();
-            CenterLightSource();
+            CenterPlayerEffect();
         });
     }
 
@@ -549,27 +553,33 @@ function createGame(context) {
 /*
 *  Effect for player/item
 */
-function CenterLightSource(){
-    let playerPos = document.querySelector('.player').getBoundingClientRect();
+function CenterPlayerEffect(){
+    let playerPos = document.querySelector('.player');
 
-    $('.mpg-flashlight').offset({
-        top: playerPos.top + window.scrollX - 493,
-        left: playerPos.left + window.scrollY - 493
-    });
-    $('.mpg-memory').offset({
-        top: playerPos.top + window.scrollX- 93,
-        left: playerPos.left + window.scrollY- 93
-    });
-    $('.vfx-nade').offset({
-        top: playerPos.top + window.scrollX - 50 ,
-        left: playerPos.left + window.scrollY - 50
-    });
+    if(effectPlayer.classList.contains('mpg-flashlight'))
+    {
+        document.querySelector('.mpg-flashlight').style.top = (parseInt(playerPos.style.top.replace(/px/,""))-513)+"px";
+        document.querySelector('.mpg-flashlight').style.left = (parseInt(playerPos.style.left.replace(/px/,""))-513)+"px";
+    }
+    else if(effectPlayer.classList.contains('mpg-memory'))
+    {
+        document.querySelector('.mpg-memory').style.top = (parseInt(playerPos.style.top.replace(/px/,""))-91)+"px";
+        document.querySelector('.mpg-memory').style.left = (parseInt(playerPos.style.left.replace(/px/,""))-91)+"px";
+    }
+
 }
 
-
+function CenterItemEffect(){
+    let playerPos = document.querySelector('.player');
+    if(effectItem.classList.contains('vfx-nade'))
+    {
+        document.querySelector('.vfx-nade').style.top = (parseInt(playerPos.style.top.replace(/px/,""))-50)+"px";
+        document.querySelector('.vfx-nade').style.left = (parseInt(playerPos.style.left.replace(/px/,""))-50)+"px";
+    }
+}
 
 // reposistion vfx when resize
-window.addEventListener("resize", CenterLightSource);
+window.addEventListener("resize", CenterPlayerEffect);
 // remove item vfx when its end 
 effectArea.addEventListener("animationend", function() {
     console.log("vfx class cleared");
@@ -579,7 +589,8 @@ effectArea.addEventListener("animationend", function() {
 }, false);
 //debug btn
 testBtn.addEventListener('click', function() {
-    effectItem.classList.add('mpg-flashlight');
+    effectPlayer.classList.add('mpg-flashlight');
+    CenterPlayerEffect();
 })
 
 app.init();
