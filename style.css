@@ -57,6 +57,28 @@ button.navbar-toggler {
   height: 100vh;
 }
 
+
+form.form-inline {
+  padding: 13px;
+  margin: 0px;
+}
+
+input#name {
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  height: calc(2.25rem + 2px);
+  width: 100%;
+  font-size: 1rem !important;
+  color: #495057;
+}
+input{
+  padding:10px;
+}
+label {
+  color: #1f2225;
+}
+
 /*
  * General Styling
  */
