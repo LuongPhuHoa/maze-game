@@ -571,15 +571,16 @@ function createGame(context, index) {
     }
 }
 
+/*disme mày sửa này đi*/
 let startBtn = document.getElementById("start-game");
 startBtn.addEventListener("click", () => { 
-    let title = document.getElementById("start");
-    title.className = "";
-    title.classList.add("d-none");
-
-    let start = document.getElementById("leader")
+    let start = document.getElementById("start");
     start.classList.remove("d-flex");
     start.classList.add("d-none");
+
+    let leader = document.getElementById("leader")
+    leader.classList.remove("d-flex");
+    leader.classList.add("d-none");
 
     let maze = document.getElementById("game");
     maze.classList.remove("d-none");
