@@ -285,6 +285,20 @@ div.layer div {
 }
 .items {
   background-color: #05ffc1;
+  transform:scale(0.85);
+}
+#effect-item{
+  transform: scale(0.85)
+}
+#effect-player{
+  transition: left 0.2s ease, top 0.2s ease;
+  transform: scale(0.85)
+}
+#effect-player.collide{
+  animation: wobble 0.5s;
+  animation-iteration-count: infinite;
+  transition: background-color 0.2s;
+
 }
 
 /* 
@@ -377,7 +391,7 @@ div.layer div {
  * map situation 1
  */
 .mpg-flashlight {
-  padding: 100px;
+  padding: 120px;
   border-radius: 50%;
   position: absolute;
   background-color: #fff7d338;

@@ -38,7 +38,7 @@ levels[0] = {
         y: 18
     },
     //set the position of goal depending on the map array, also using array to declare more items
-    items: [{x: 2,y: 6},{x: 2,y: 4}, {x: 10,y: 4}],
+    items: [{x: 0,y: 6},{x: 2,y: 4}, {x: 10,y: 4}],
     //choose theme to change style of map and its elements
     theme: 'default',
 };
@@ -89,6 +89,8 @@ levels[1] = {
 
 let effectArea = document.querySelector('#effect-area');
 let effectItem = document.querySelector('#effect-item');
+let effectPlayer = document.querySelector('#effect-player');
+let tilesArea = document.querySelector('#tiles');
 let testBtn = document.querySelector('#test-effect');
 
 /* create class maze with necessary functions */
@@ -223,12 +225,14 @@ class Maze {
 
         //add class name collide to player
         this.player.el.className += ' collide';
+        effectPlayer.classList.add('collide');
 
         let obj = this;
 
         //set time out of collide effect
         window.setTimeout(function () {
             obj.player.el.className = 'player';
+            effectPlayer.classList.remove('collide');
         }, 200);
 
         return 0;
@@ -348,10 +352,40 @@ class Maze {
 
     }
 
-    //random item effect
-    randomItem(){
+    removeWall(posX, posY){
+        let startX = posX - 2;
+        let startY = posY - 2;
+        let endX = posX + 3;
+        let endY = posY + 3;
 
-        switch (2){//Math.floor(Math.random() * 3)){
+        //limit area to remove wall
+        if(startX < 0){
+            startX = 0;
+        }
+        if(startY < 0){
+            startY = 0;
+        }
+        if(endX > this.map[0].length){
+            endX = this.map[0].length;
+        }
+        if(endY > this.map.length){
+            endY = this.map.length;
+        }
+
+        // changing the wall to floor 
+        let tilesArea = document.querySelector('#tiles');
+        for(let i = startY; i < endY; i++){
+            for( let j = startX; j < endX; j++){
+                tilesArea.childNodes[(i * this.map.length) + j].className = "floor";
+                this.map[i][j] = 0;
+            }
+        }
+
+    }
+
+    //random item effect
+    randomItem(num){
+        switch (num){
             case 0:
                 effectArea.classList.add('vfx-flashbang');
                 break;
@@ -359,7 +393,6 @@ class Maze {
                 effectArea.classList.add('vfx-spook');
                 break;
             case 2:
-                //effectItem.
                 effectItem.classList.add('vfx-nade');
                 break;
         }
@@ -371,7 +404,16 @@ class Maze {
 
         for(let i = 0; i < this.items.length;i++){
             if (this.player.y == this.items[i].y && this.player.x == this.items[i].x) {
-                this.randomItem();
+                let randomNum = Math.floor(Math.random() * 3)
+                this.randomItem(randomNum);
+                if (randomNum === 2){
+                    this.removeWall(this.items[i].x, this.items[i].y);
+
+                }
+                CenterItemEffect();
+                // remove item and sprites after used
+                this.items.splice(i,1);
+                document.querySelector('#sprites').childNodes[i].remove();
             }
         };
 
@@ -457,7 +499,7 @@ class Maze {
         document.addEventListener('keydown', event => {
             this.movePlayer(event);
             this.checkGoal();
-            CenterLightSource();
+            CenterPlayerEffect();
         });
 
     }
@@ -545,30 +587,39 @@ function createGame(context) {
     }
 }
 
-/* Effect for player/item */
-function CenterLightSource(){
-    let playerPos = document.querySelector('.player').getBoundingClientRect();
+/*
+*  make the player's effect follow the player coord on the maze
+*/
+function CenterPlayerEffect(){
+    let playerPos = document.querySelector('.player');
 
-    $('.mpg-flashlight').offset({
-        top: playerPos.top + window.scrollX - 493,
-        left: playerPos.left + window.scrollY - 493
-    });
-    $('.mpg-memory').offset({
-        top: playerPos.top + window.scrollX- 93,
-        left: playerPos.left + window.scrollY- 93
-    });
-    $('.vfx-nade').offset({
-        top: playerPos.top + window.scrollX - 50 ,
-        left: playerPos.left + window.scrollY - 50
-    });
+    if(effectPlayer.classList.contains('mpg-flashlight'))
+    {
+        document.querySelector('.mpg-flashlight').style.top = (parseInt(playerPos.style.top.replace(/px/,""))-513)+"px";
+        document.querySelector('.mpg-flashlight').style.left = (parseInt(playerPos.style.left.replace(/px/,""))-513)+"px";
+    }
+    else if(effectPlayer.classList.contains('mpg-memory'))
+    {
+        document.querySelector('.mpg-memory').style.top = (parseInt(playerPos.style.top.replace(/px/,""))-91)+"px";
+        document.querySelector('.mpg-memory').style.left = (parseInt(playerPos.style.left.replace(/px/,""))-91)+"px";
+    }
+
+}
+/*
+*  make the items's effect follow the items coord on the maze
+*/
+function CenterItemEffect(){
+    let playerPos = document.querySelector('.player');
+    if(effectItem.classList.contains('vfx-nade'))
+    {
+        document.querySelector('.vfx-nade').style.top = (parseInt(playerPos.style.top.replace(/px/,""))-50)+"px";
+        document.querySelector('.vfx-nade').style.left = (parseInt(playerPos.style.left.replace(/px/,""))-50)+"px";
+    }
 }
 
-
-
-//reposistion vfx when resize
-window.addEventListener("resize", CenterLightSource);
-
-//remove item vfx when its end 
+// add listener to player/item effect when window resized
+window.addEventListener("resize", CenterPlayerEffect);
+// remove item effect when its end 
 effectArea.addEventListener("animationend", function() {
     console.log("vfx class cleared");
     effectArea.classList.remove('vfx-flashbang');
@@ -578,7 +629,8 @@ effectArea.addEventListener("animationend", function() {
 
 //debug btn
 testBtn.addEventListener('click', function() {
-    effectItem.classList.add('mpg-flashlight');
+    effectPlayer.classList.add('mpg-flashlight');
+    CenterPlayerEffect();
 })
 
 app.init();
