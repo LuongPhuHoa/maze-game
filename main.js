@@ -573,11 +573,11 @@ function createGame(context, index) {
 
 let startBtn = document.getElementById("start-game");
 startBtn.addEventListener("click", () => { 
-    let title = document.getElementById("title");
+    let title = document.getElementById("start");
     title.className = "";
     title.classList.add("d-none");
 
-    let start = document.getElementById("start")
+    let start = document.getElementById("leader")
     start.classList.remove("d-flex");
     start.classList.add("d-none");
 
@@ -585,7 +585,7 @@ startBtn.addEventListener("click", () => {
     maze.classList.remove("d-none");
     maze.classList.add("d-flex");
 
-    let levelSelect = document.querySelector(".form-group select");
+    let levelSelect = document.getElementById("level");
     let value = levelSelect.value;
 
     if(value == "easy") {
