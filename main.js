@@ -90,17 +90,18 @@ let effectItem = document.querySelector('#effect-item');
 let effectPlayer = document.querySelector('#effect-player');
 let tilesArea = document.querySelector('#tiles');
 let testBtn = document.querySelector('#test-effect');
+let continueBtn = document.querySelector('#continue-btn');
 
 /* create class maze with necessary functions */
 class Maze {
     //declare constructor
-    constructor(id, level, tileDimension) {
+    constructor(id, level, index, tileDimension) {
 
         //access id of element to create maze
         this.el = document.getElementById(id);
 
         //level index used to change level
-        this.level_idx = 0;
+        this.level_idx = index;
 
         //establish the basic properties to create maze
         this.tileTypes = ['floor', 'wall'];
@@ -463,8 +464,8 @@ class Maze {
 
         let obj = this;
 
-        //if game board is clicked, change levels
-        map.addEventListener('mousedown', function (e) {
+        //if continue button is clicked, change levels
+        continueBtn.addEventListener('click', function () {
 
             //if not at the goal, return
             if (obj.player.y != obj.goal.y || obj.player.x != obj.goal.x) {
@@ -560,7 +561,7 @@ function createGame(context, index) {
     context.init = function () {
 
         //create an object of maze
-        let myGame = new Maze('game-container-1', levels[index], 25);
+        let myGame = new Maze('game-container-1', levels[index], index, 25);
 
         //create multi-level
         myGame.placeLevel();
@@ -636,8 +637,5 @@ effectArea.addEventListener("animationend", function () {
     effectItem.classList.remove('vfx-nade');
 }, false);
 
-// //debug btn
-// testBtn.addEventListener('click', function() {
-//     effectPlayer.classList.add('mpg-flashlight');
-//     CenterPlayerEffect();
-// })
+// debug effect
+// effectPlayer.classList.add('mpg-flashlight');

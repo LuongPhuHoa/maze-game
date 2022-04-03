@@ -141,9 +141,9 @@ p {
   transition: opacity 0.2s ease;
   position: absolute;
   padding: 5px 5px;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  width: calc(100% - 8px);
+  color: #86d4fa;
+  background-color: #6600db;
+  width: 100%;
 }
 
 body.success #success-msg {
