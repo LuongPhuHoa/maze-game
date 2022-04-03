@@ -45,11 +45,7 @@ body {
 
 button.navbar-toggler {
   border: none;
-  outline:none;
-}
-
-.navbar-toggler:hover {
-  border:0;
+  outline: none;
 }
 
 .bg-image {
@@ -64,20 +60,23 @@ button.navbar-toggler {
 /*
  * General Styling
  */
- body {
+body {
   font-family: Calibri;
   transition: 0.2s ease;
   text-align: center;
 }
-body.success  {
+
+body.success {
   background-color: #b7f0b7;
   transition: 0.2s ease;
 }
+
 /* center everything in game container */
 .game-container {
   margin: 0px auto;
   padding-top: 200px;
 }
+
 /*
  * Map screen
  */
@@ -88,6 +87,7 @@ body.success  {
   box-sizing: content-box;
   border: 45px solid white;
 }
+
 /*
  * Output text styles
  */
@@ -106,6 +106,7 @@ p {
   display: flex;
   justify-content: center;
 }
+
 /*
  * Controls
  */
@@ -114,6 +115,7 @@ p {
   margin-left: 10px;
   text-align: center;
 }
+
 /*
  * Container for right and left buttons
  */
@@ -128,11 +130,12 @@ p {
   transition: opacity 0.2s ease;
   position: absolute;
   padding: 5px 5px;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   color: white;
   width: calc(100% - 8px);
 }
- body.success #success-msg {
+
+body.success #success-msg {
   opacity: 1;
   transition: opacity 0.2 ease;
 }
@@ -147,18 +150,19 @@ div.layer,
 div.layer div {
   position: absolute;
 }
+
 /* border for floors and wall */
 #tiles div {
   border: 1px solid grey;
 }
 
-#effect-area{
+#effect-area {
   width: inherit;
   height: inherit;
   background: #00000000;
 }
 
-#effect-item{
+#effect-item {
   position: absolute;
   width: 20px;
   height: 20px;
@@ -176,17 +180,20 @@ div.layer div {
 .default .wall {
   background-color: white;
 }
+
 /*
  * grassland theme  
  */
 .grassland .floor {
   background-color: #7bb76d;
 }
+
 .grassland .wall {
   background-color: #806d51;
 }
+
 .grassland .player {
- background-color: #b2ccec;
+  background-color: #b2ccec;
 }
 
 /* 
@@ -195,20 +202,24 @@ div.layer div {
 .dungeon .floor {
   background-color: darkgrey;
 }
+
 .dungeon .wall {
   background-color: #9c649c;
 }
+
 .dungeon .player {
- background-color: #ab1431;
+  background-color: #ab1431;
 }
+
 /*
  * player and goal are slightly smaller than tiles
  */
-.player, 
+.player,
 .goal {
   transform-origin: center;
-  transform:scale(0.85);
+  transform: scale(0.85);
 }
+
 /*
  * Goal colors
  */
@@ -216,6 +227,7 @@ div.layer div {
   background-color: #FFD700;
   border: 1px solid #98720b;
 }
+
 /*
  *  Player default colors
  */
@@ -224,15 +236,17 @@ div.layer div {
   border: 1px solid #008000;
   transition: left 0.2s ease, top 0.2s ease;
 }
+
 /*
  * Player wobbles when colliding with wall or border
  */
-.player.collide {  
+.player.collide {
   animation: wobble 0.5s;
   animation-iteration-count: infinite;
   transition: background-color 0.2s;
-  
+
 }
+
 .items {
   background-color: #05ffc1;
 }
@@ -241,85 +255,142 @@ div.layer div {
  * Wobble animation for player
  */
 @keyframes wobble {
-  0% { transform: scale(0.85) translate(1px, 1px); }
-  10% { transform: scale(0.85) translate(-1px, -2px); }
-  20% { transform: scale(0.85) translate(-3px, 0px); }
-  30% { transform: scale(0.85) translate(3px, 2px); }
-  40% { transform: scale(0.85) translate(1px, -1px);}
-  50% { transform: scale(0.85) translate(-1px, 2px); }
-  60% { transform: scale(0.85) translate(-3px, 1px); }
-  70% { transform: scale(0.85) translate(3px, 1px); }
-  80% { transform: scale(0.85) translate(-1px, -1px); }
-  90% { transform: scale(0.85) translate(1px, 2px); }
-  100% { transform: scale(0.85) translate(1px, -2px);; }
+  0% {
+    transform: scale(0.85) translate(1px, 1px);
+  }
+
+  10% {
+    transform: scale(0.85) translate(-1px, -2px);
+  }
+
+  20% {
+    transform: scale(0.85) translate(-3px, 0px);
+  }
+
+  30% {
+    transform: scale(0.85) translate(3px, 2px);
+  }
+
+  40% {
+    transform: scale(0.85) translate(1px, -1px);
+  }
+
+  50% {
+    transform: scale(0.85) translate(-1px, 2px);
+  }
+
+  60% {
+    transform: scale(0.85) translate(-3px, 1px);
+  }
+
+  70% {
+    transform: scale(0.85) translate(3px, 1px);
+  }
+
+  80% {
+    transform: scale(0.85) translate(-1px, -1px);
+  }
+
+  90% {
+    transform: scale(0.85) translate(1px, 2px);
+  }
+
+  100% {
+    transform: scale(0.85) translate(1px, -2px);
+    ;
+  }
 }
 
 /* 
  * flashbang animation for map area
  */
- .vfx-flashbang {
+.vfx-flashbang {
   animation-name: flashbang;
   animation-duration: 5s;
 }
 
 @keyframes flashbang {
-  0%   {background-color: #ffffff60;}
-  3%   {background-color: #ffffff;}
-  60%  {background-color: #ffffff;}
-  100% {background-color: #ffffff00;}
+  0% {
+    background-color: #ffffff60;
+  }
+
+  3% {
+    background-color: #ffffff;
+  }
+
+  60% {
+    background-color: #ffffff;
+  }
+
+  100% {
+    background-color: #ffffff00;
+  }
 }
 
 
 /* 
  * spook animation for map area
  */
- .vfx-spook {
+.vfx-spook {
   animation-name: spook;
-  animation-duration: 2s;;
+  animation-duration: 2s;
+  ;
   background-size: cover;
   z-index: 1;
 }
 
 @keyframes spook {
-  0%   {background-image: url("https://filmdaily.co/wp-content/uploads/2020/10/amongus-main.jpg")}
-  100% {background-image: none}
+  0% {
+    background-image: url("https://filmdaily.co/wp-content/uploads/2020/10/amongus-main.jpg")
+  }
+
+  100% {
+    background-image: none
+  }
 }
 
 /* 
  * nade animation for player item
  */
- .vfx-nade {
+.vfx-nade {
   padding: 20px;
   border-radius: 12px;
   position: absolute;
   background-color: #ffffff00;
   animation-name: nade;
-  animation-duration: 1s;;
-  pointer-events:none;
+  animation-duration: 1s;
+  ;
+  pointer-events: none;
 }
 
 @keyframes nade {
-  0%  {
-      background-color: #070031;
-      padding: 60px;
-      -webkit-box-shadow: 0 0 30px 20px #070031;
-      box-shadow:inset 0 0 30px 20px white    }
-  20%  {
-      background-color: #070031;
-      padding: 60px;
-      -webkit-box-shadow: 0 0 30px 20px #070031;
-      box-shadow:inset 0 0 30px 0 white    }
+  0% {
+    background-color: #070031;
+    padding: 60px;
+    -webkit-box-shadow: 0 0 30px 20px #070031;
+    box-shadow: inset 0 0 30px 20px white
+  }
 
-  80%  {
-      background-color: #070031;
-      padding: 60px;
-      -webkit-box-shadow: 0 0 30px 20px #070031;
-      box-shadow:inset 0 0 10px 20px white   }
-  100%  {
-      background-color: #070031;
-      padding: 60px;
-      -webkit-box-shadow: 0 0 30px 20px #070031;
-      box-shadow:inset 0 0 10px 100px white   }
+  20% {
+    background-color: #070031;
+    padding: 60px;
+    -webkit-box-shadow: 0 0 30px 20px #070031;
+    box-shadow: inset 0 0 30px 0 white
+  }
+
+  80% {
+    background-color: #070031;
+    padding: 60px;
+    -webkit-box-shadow: 0 0 30px 20px #070031;
+    box-shadow: inset 0 0 10px 20px white
+  }
+
+  100% {
+    background-color: #070031;
+    padding: 60px;
+    -webkit-box-shadow: 0 0 30px 20px #070031;
+    box-shadow: inset 0 0 10px 100px white
+  }
 }
 
 
@@ -332,8 +403,9 @@ div.layer div {
   position: absolute;
   background-color: #fff7d338;
   border: 400px solid black;
-  pointer-events:none
+  pointer-events: none
 }
+
 /* 
  * map situation 2
  */
@@ -342,33 +414,73 @@ div.layer div {
   position: absolute;
   background-color: #000000;
   border: 100px solid black;
-  pointer-events:none
+  pointer-events: none
 }
+
 /* 
  * map situation 3
  */
- .mpg-lightning {
+.mpg-lightning {
   background-color: black;
   animation-name: lightning;
   animation-duration: 7s;
 }
+
 /* 
  * lightning animation for map situation
  */
 @keyframes lightning {
-  0%   {background-color: #000000;}
-  1%   {background-color: #ffffff8c;}
-  4%   {background-color: #ffffffd3;}
-  5%   {background-color: #ffffff8c;}
-  8%   {background-color: #ffffffc9;}
-  12%  {background-color: #ffffff00;}
-  39%  {background-color: #00000000;}
-  40%  {background-color: #ffffffb6;}
-  41%  {background-color: #ffffff8c;}
-  44%  {background-color: #ffffffad;}
-  48%  {background-color: #ffffff00;}
-  67%  {background-color: #ffffff00;}
-  100% {background-color: #000000;}
+  0% {
+    background-color: #000000;
+  }
+
+  1% {
+    background-color: #ffffff8c;
+  }
+
+  4% {
+    background-color: #ffffffd3;
+  }
+
+  5% {
+    background-color: #ffffff8c;
+  }
+
+  8% {
+    background-color: #ffffffc9;
+  }
+
+  12% {
+    background-color: #ffffff00;
+  }
+
+  39% {
+    background-color: #00000000;
+  }
+
+  40% {
+    background-color: #ffffffb6;
+  }
+
+  41% {
+    background-color: #ffffff8c;
+  }
+
+  44% {
+    background-color: #ffffffad;
+  }
+
+  48% {
+    background-color: #ffffff00;
+  }
+
+  67% {
+    background-color: #ffffff00;
+  }
+
+  100% {
+    background-color: #000000;
+  }
 }
 
 h1 span {
@@ -438,6 +550,7 @@ h1 span:nth-child(14) {
 h1 span:nth-child(15) {
   animation-delay: 0.4s;
 }
+
 h1 span:nth-child(16) {
   animation-delay: 0.5s;
 }
@@ -452,6 +565,99 @@ h1 span:nth-child(16) {
   }
 }
 
-.main-section{
-  height:300px;
+.leaderboard {
+  max-width: 490px;
+  width: 100%;
+  border-radius: 12px;
 }
+
+.leaderboard header {
+    --start: 15%;
+    height: 130px;
+    background-image: repeating-radial-gradient(circle at var(--start), transparent 0%, transparent 10%, rgba(54, 89, 219, .33) 10%, rgba(54, 89, 219, .33) 17%), linear-gradient(to right, #5b7cfa, #3659db);
+    color: #fff;
+    position: relative;
+    border-radius: 12px 12px 0 0;
+    overflow: hidden;
+}
+
+.leaderboard header .leaderboard__title {
+  position: absolute;
+      z-index: 2;
+      top: 50%;
+      right: calc(var(--start) * .75);
+      transform: translateY(-50%);
+      text-transform: uppercase;
+      margin: 0;
+}
+
+.leaderboard header span {
+  display: block;
+}
+
+.leaderboard header .leaderboard__icon {
+  fill: #fff;
+  opacity: .35;
+  width: 50px;
+  position: absolute;
+  top: 50%;
+  left: var(--start);
+  transform: translate(-50%, -50%);
+}
+
+.leaderboard__profiles {
+  background-color: #fff;
+  border-radius: 0 0 12px 12px;
+  padding: 15px 15px 20px;
+  display: grid;
+  row-gap: 8px;
+}
+
+.leaderboard__profile {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  align-items: center;
+  padding: 10px 30px 10px 10px;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 5px 7px -1px rgba(51, 51, 51, 0.23);
+  cursor: pointer;
+  transition: transform .25s cubic-bezier(.7,.98,.86,.98), box-shadow .25s cubic-bezier(.7,.98,.86,.98);
+  background-color: #fff;
+}
+
+.leaderboard__profile:hover {
+  transform: scale(1.2);
+  box-shadow: 0 9px 47px 11px rgba(51, 51, 51, 0.18);
+}
+
+.leaderboard__picture {
+  max-width: 100%;
+    width: 60px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 10px #ebeef3, 0 0 0 22px #f3f4f6;
+}
+
+.leaderboard__name {
+  color: #979cb0;
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: 0.64px;
+  margin-left: 12px;
+}
+
+.leaderboard__value {
+  color: #35d8ac;
+  font-weight: 700;
+  font-size: 34px;
+  text-align: right;
+}
+
+.leaderboard__value span {
+  opacity: .8;
+  font-weight: 600;
+  font-size: 13px;
+  margin-left: 3px;
+}
+
+
