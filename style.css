@@ -61,6 +61,55 @@ button.navbar-toggler {
   height: 100vh;
 }
 
+/* Slick slider style */
+.home-category h1 {
+  font-size: 45px;
+  font-weight: 900;
+}
+
+.slider-item-img {
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.prev-icon, .next-icon {
+  margin-top: 120px;
+  font-size: 35px;
+}
+
+.slick-list {
+  justify-content: center;
+  align-items: center;
+}
+
+.slick-dots {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  padding-top: 3%;
+  list-style-type: none;
+}
+
+.slick-dots li {
+  margin: 0 0.25rem;
+}
+
+.slick-dots button {
+  display: block;
+  width: 0.6rem;
+  height: 0.6rem;
+  padding: 0;
+  border: none;
+  border-radius: 100%;
+  background-color: #808080;	
+  text-indent: -9999px;
+}
+
+.slick-dots li.slick-active button {
+  background-color: #1d1d1d;
+}
+
 /*
  * General Styling
  */
