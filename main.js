@@ -38,7 +38,7 @@ levels[0] = {
         y: 18
     },
     //set the position of goal depending on the map array, also using array to declare more items
-    items: [{x: 2,y: 6},{x: 2,y: 4}, {x: 10,y: 4}],
+    items: [{x: 0,y: 6},{x: 2,y: 4}, {x: 10,y: 4}],
     //choose theme to change style of map and its elements
     theme: 'default',
 };
@@ -90,6 +90,7 @@ levels[1] = {
 let effectArea = document.querySelector('#effect-area');
 let effectItem = document.querySelector('#effect-item');
 let effectPlayer = document.querySelector('#effect-player');
+let tilesArea = document.querySelector('#tiles');
 let testBtn = document.querySelector('#test-effect');
 
 /* create class maze with necessary functions */
@@ -351,9 +352,40 @@ class Maze {
 
     }
 
+    removeWall(posX, posY){
+        let startX = posX - 2;
+        let startY = posY - 2;
+        let endX = posX + 3;
+        let endY = posY + 3;
+
+        //limit area to remove wall
+        if(startX < 0){
+            startX = 0;
+        }
+        if(startY < 0){
+            startY = 0;
+        }
+        if(endX > this.map[0].length){
+            endX = this.map[0].length;
+        }
+        if(endY > this.map.length){
+            endY = this.map.length;
+        }
+
+        // changing the wall to floor 
+        let tilesArea = document.querySelector('#tiles');
+        for(let i = startY; i < endY; i++){
+            for( let j = startX; j < endX; j++){
+                tilesArea.childNodes[(i * this.map.length) + j].className = "floor";
+                this.map[i][j] = 0;
+            }
+        }
+
+    }
+
     //random item effect
-    randomItem(){
-        switch (Math.floor(Math.random() * 3)){
+    randomItem(num){
+        switch (num){
             case 0:
                 effectArea.classList.add('vfx-flashbang');
                 break;
@@ -361,7 +393,6 @@ class Maze {
                 effectArea.classList.add('vfx-spook');
                 break;
             case 2:
-                //effectItem.
                 effectItem.classList.add('vfx-nade');
                 break;
         }
@@ -373,8 +404,16 @@ class Maze {
 
         for(let i = 0; i < this.items.length;i++){
             if (this.player.y == this.items[i].y && this.player.x == this.items[i].x) {
-                this.randomItem();
-                CenterItemEffect()
+                let randomNum = Math.floor(Math.random() * 3)
+                this.randomItem(randomNum);
+                if (randomNum === 2){
+                    this.removeWall(this.items[i].x, this.items[i].y);
+
+                }
+                CenterItemEffect();
+                // remove item and sprites after used
+                this.items.splice(i,1);
+                document.querySelector('#sprites').childNodes[i].remove();
             }
         };
 
