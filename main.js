@@ -1,7 +1,5 @@
 let app = {};
 
-createGame(app);
-
 let levels = [];
 levels[0] = {
     //this map is used to store maze
@@ -38,7 +36,7 @@ levels[0] = {
         y: 18
     },
     //set the position of goal depending on the map array, also using array to declare more items
-    items: [{x: 0,y: 6},{x: 2,y: 4}, {x: 10,y: 4}],
+    items: [{ x: 0, y: 6 }, { x: 2, y: 4 }, { x: 10, y: 4 }],
     //choose theme to change style of map and its elements
     theme: 'default',
 };
@@ -83,7 +81,7 @@ levels[1] = {
         x: 28,
         y: 28
     },
-    items: [{x: 2,y: 6},{x: 2,y: 4}],
+    items: [{ x: 2, y: 6 }, { x: 2, y: 4 }],
     theme: 'grassland',
 }
 
@@ -96,7 +94,7 @@ let testBtn = document.querySelector('#test-effect');
 /* create class maze with necessary functions */
 class Maze {
     //declare constructor
-    constructor(id, level) {
+    constructor(id, level, tileDimension) {
 
         //access id of element to create maze
         this.el = document.getElementById(id);
@@ -106,7 +104,7 @@ class Maze {
 
         //establish the basic properties to create maze
         this.tileTypes = ['floor', 'wall'];
-        this.tileDim = 20;
+        this.tileDim = tileDimension;
 
         //inherit the level's properties from levels[]
         this.map = level.map;
@@ -289,20 +287,20 @@ class Maze {
     /* Moves the player right */
     moveRight() {
         if (this.player.x == this.map[this.player.y].length - 1) {
-          this.collide();
-          return;
+            this.collide();
+            return;
         }
         let nextTile = this.map[this.player.y][this.player.x + 1];
-    
+
         if (nextTile == 1) {
-          this.collide()
-          return;
+            this.collide()
+            return;
         }
         this.player.x += 1;
-    
+
         this.player.el.style.left = this.player.x * this.tileDim + 'px';
 
-      };
+    };
     /* Moves the player down */
     moveDown() {
 
@@ -352,30 +350,30 @@ class Maze {
 
     }
 
-    removeWall(posX, posY){
+    removeWall(posX, posY) {
         let startX = posX - 2;
         let startY = posY - 2;
         let endX = posX + 3;
         let endY = posY + 3;
 
         //limit area to remove wall
-        if(startX < 0){
+        if (startX < 0) {
             startX = 0;
         }
-        if(startY < 0){
+        if (startY < 0) {
             startY = 0;
         }
-        if(endX > this.map[0].length){
+        if (endX > this.map[0].length) {
             endX = this.map[0].length;
         }
-        if(endY > this.map.length){
+        if (endY > this.map.length) {
             endY = this.map.length;
         }
 
         // changing the wall to floor 
         let tilesArea = document.querySelector('#tiles');
-        for(let i = startY; i < endY; i++){
-            for( let j = startX; j < endX; j++){
+        for (let i = startY; i < endY; i++) {
+            for (let j = startX; j < endX; j++) {
                 tilesArea.childNodes[(i * this.map.length) + j].className = "floor";
                 this.map[i][j] = 0;
             }
@@ -384,8 +382,8 @@ class Maze {
     }
 
     //random item effect
-    randomItem(num){
-        switch (num){
+    randomItem(num) {
+        switch (num) {
             case 0:
                 effectArea.classList.add('vfx-flashbang');
                 break;
@@ -402,17 +400,17 @@ class Maze {
     /* Check if item has been reached */
     checkItems() {
 
-        for(let i = 0; i < this.items.length;i++){
+        for (let i = 0; i < this.items.length; i++) {
             if (this.player.y == this.items[i].y && this.player.x == this.items[i].x) {
                 let randomNum = Math.floor(Math.random() * 3)
                 this.randomItem(randomNum);
-                if (randomNum === 2){
+                if (randomNum === 2) {
                     this.removeWall(this.items[i].x, this.items[i].y);
 
                 }
                 CenterItemEffect();
                 // remove item and sprites after used
-                this.items.splice(i,1);
+                this.items.splice(i, 1);
                 document.querySelector('#sprites').childNodes[i].remove();
             }
         };
@@ -453,7 +451,7 @@ class Maze {
         this.theme = level.theme;
         this.player = { ...level.player };  //make copy of the player
         this.goal = { ...level.goal };  //make copy of the goal
-        this.items =  level.items; //make copy of the items
+        this.items = level.items; //make copy of the items
 
     }
 
@@ -479,7 +477,7 @@ class Maze {
             //get the layers then clear tiles and sprites
             let layers = obj.el.querySelectorAll('.layer');
             layers.forEach(layer => {
-                if(layer.id != 'effect-area'){
+                if (layer.id != 'effect-area') {
                     layer.innerHTML = '';
                 }
             });
@@ -557,26 +555,12 @@ class Maze {
     }
 }
 
-function createGame(context) {
-    context.init = function () {
-
-        let myGame = new Maze('game-container-1', levels[0]);
-
-        // encapsulate for multi-level
-        myGame.placeLevel();
-
-        // add movement listeners
-        myGame.addMovementListeners();
-
-    }
-}
-
 //function create the game
-function createGame(context) {
+function createGame(context, index) {
     context.init = function () {
 
         //create an object of maze
-        let myGame = new Maze('game-container-1', levels[0]);
+        let myGame = new Maze('game-container-1', levels[index], 25);
 
         //create multi-level
         myGame.placeLevel();
@@ -587,52 +571,72 @@ function createGame(context) {
     }
 }
 
+let startBtn = document.getElementById("start-game");
+startBtn.addEventListener("click", () => { 
+    let title = document.getElementById("title");
+    title.className = "";
+    title.classList.add("d-none");
+
+    let start = document.getElementById("start")
+    start.classList.remove("d-flex");
+    start.classList.add("d-none");
+
+    let maze = document.getElementById("game");
+    maze.classList.remove("d-none");
+    maze.classList.add("d-flex");
+
+    let levelSelect = document.querySelector(".form-group select");
+    let value = levelSelect.value;
+
+    if(value == "easy") {
+        createGame(app, 0);
+        app.init();
+    }
+    else if(value == "medium") {
+        createGame(app, 1);
+        app.init();
+    }
+})
+
 /*
 *  make the player's effect follow the player coord on the maze
 */
-function CenterPlayerEffect(){
+function CenterPlayerEffect() {
     let playerPos = document.querySelector('.player');
 
-    if(effectPlayer.classList.contains('mpg-flashlight'))
-    {
-        document.querySelector('.mpg-flashlight').style.top = (parseInt(playerPos.style.top.replace(/px/,""))-513)+"px";
-        document.querySelector('.mpg-flashlight').style.left = (parseInt(playerPos.style.left.replace(/px/,""))-513)+"px";
+    if (effectPlayer.classList.contains('mpg-flashlight')) {
+        document.querySelector('.mpg-flashlight').style.top = (parseInt(playerPos.style.top.replace(/px/, "")) - 513) + "px";
+        document.querySelector('.mpg-flashlight').style.left = (parseInt(playerPos.style.left.replace(/px/, "")) - 513) + "px";
     }
-    else if(effectPlayer.classList.contains('mpg-memory'))
-    {
-        document.querySelector('.mpg-memory').style.top = (parseInt(playerPos.style.top.replace(/px/,""))-91)+"px";
-        document.querySelector('.mpg-memory').style.left = (parseInt(playerPos.style.left.replace(/px/,""))-91)+"px";
+    else if (effectPlayer.classList.contains('mpg-memory')) {
+        document.querySelector('.mpg-memory').style.top = (parseInt(playerPos.style.top.replace(/px/, "")) - 91) + "px";
+        document.querySelector('.mpg-memory').style.left = (parseInt(playerPos.style.left.replace(/px/, "")) - 91) + "px";
     }
 
 }
 /*
 *  make the items's effect follow the items coord on the maze
 */
-function CenterItemEffect(){
+function CenterItemEffect() {
     let playerPos = document.querySelector('.player');
-    if(effectItem.classList.contains('vfx-nade'))
-    {
-        document.querySelector('.vfx-nade').style.top = (parseInt(playerPos.style.top.replace(/px/,""))-50)+"px";
-        document.querySelector('.vfx-nade').style.left = (parseInt(playerPos.style.left.replace(/px/,""))-50)+"px";
+    if (effectItem.classList.contains('vfx-nade')) {
+        document.querySelector('.vfx-nade').style.top = (parseInt(playerPos.style.top.replace(/px/, "")) - 50) + "px";
+        document.querySelector('.vfx-nade').style.left = (parseInt(playerPos.style.left.replace(/px/, "")) - 50) + "px";
     }
 }
 
 // add listener to player/item effect when window resized
 window.addEventListener("resize", CenterPlayerEffect);
 // remove item effect when its end 
-effectArea.addEventListener("animationend", function() {
+effectArea.addEventListener("animationend", function () {
     console.log("vfx class cleared");
     effectArea.classList.remove('vfx-flashbang');
     effectArea.classList.remove('vfx-spook');
     effectItem.classList.remove('vfx-nade');
 }, false);
 
-//debug btn
-testBtn.addEventListener('click', function() {
-    effectPlayer.classList.add('mpg-flashlight');
-    CenterPlayerEffect();
-})
-
-app.init();
-
-
+// //debug btn
+// testBtn.addEventListener('click', function() {
+//     effectPlayer.classList.add('mpg-flashlight');
+//     CenterPlayerEffect();
+// })

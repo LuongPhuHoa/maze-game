@@ -28,7 +28,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#!">Home</a>
+                            <a class="nav-link text-white" href="index.html">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="#!">Rules</a>
@@ -60,7 +60,7 @@
         <!-- Navbar -->
     </header>
     <main class="bg-image d-flex justify-content-center">
-        <div class="container d-flex align-items-center text-left ml-5 flex-column justify-content-center col-md-6">
+        <div class="container d-flex align-items-center text-left ml-5 flex-column justify-content-center col-md-6" id="title">
             <div class="row m-5 p-5">
                 <h1>
                     <span>S</span>
@@ -87,9 +87,24 @@
                     perspiciatis amet voluptas aspernatur quibusdam officiis. Atque, et ut?</p>
             </div>
         </div>
-        <!--<div class="container d-flex align-items-center text-left ml-5 flex-column justify-content-center">
-            <div id="game-container-1" class="game-container">
 
+        <div class="container d-flex align-items-center text-left ml-5 flex-column justify-content-center col-md-6" id="start">
+            <div class="row justify-content-center align-items-center m-5 p-5">
+                    <button type="button" name="" id="start-game" class="btn btn-primary btn-lg btn-block">Start
+                        Game</button>
+                <div class="form-group">
+                    <label for="level">Choose level</label>
+                    <select class="form-control" id="level">
+                        <option value="easy" id="easy-level">Easy</option>
+                        <option value="medium" id="medium-level">Medium</option>
+                        <option value="hard" id="hard-level">Hard</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="container d-none" style="z-index: 999;" id="game">
+            <div id="game-container-1" class="game-container">
                 <div id="map">
                     <div id="game-map-1" class="game-map">
                         <div id="tiles" class="layer"></div>
@@ -100,25 +115,6 @@
                         <div id="sprites" class="layer"></div>
                         <div id="success-msg">Goal reached! Tap the maze to change levels.</div>
                     </div>
-                </div>
-                <p id="text-1" class="text">Use cursor keys or buttons to move the marble.</p>
-                <button type="button" name="" id="test-effect" class="btn btn-primary btn-lg btn-block">Test
-                    Effect</button>
-            </div>
-        </div>-->
-        <div class="container d-flex align-items-center text-left ml-5 flex-column justify-content-center col-md-6">
-            <div class="row justify-content-center align-items-center m-5 p-5">
-                <a href="picklevel.html">
-                    <button type="button" name="" id="start-game" class="btn btn-primary btn-lg btn-block">Start
-                        Game</button>
-                </a>
-                <div class="form-group">
-                    <label for="level">Choose level</label>
-                    <select class="form-control" id="level">
-                        <option value="1">Easy</option>
-                        <option value="2">Medium</option>
-                        <option value="3">Hard</option>
-                    </select>
                 </div>
             </div>
         </div>
