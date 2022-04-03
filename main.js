@@ -571,7 +571,7 @@ function createGame(context, index) {
     }
 }
 
-/*disme mày sửa này đi*/
+/*disme sửa lâu vc rồi*/
 let startBtn = document.getElementById("start-game");
 startBtn.addEventListener("click", () => { 
     let start = document.getElementById("start");
