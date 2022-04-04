@@ -560,7 +560,7 @@ function createGame(context, index) {
     context.init = function () {
 
         //create an object of maze
-        let myGame = new Maze('game-container-1', levels[index], 25);
+        let myGame = new Maze('game-container-1', levels[index], 20);
 
         //create multi-level
         myGame.placeLevel();

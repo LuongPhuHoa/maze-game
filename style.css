@@ -83,8 +83,8 @@ body.success {
 
 /* center everything in game container */
 .game-container {
-  margin: 0px auto;
-  padding-top: 10%;
+  margin:auto;
+  padding-top: 5%;
 }
 
 /*
