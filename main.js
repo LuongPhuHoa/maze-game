@@ -131,12 +131,15 @@ let testBtn = document.querySelector('#test-effect');
 let continueBtn = document.querySelector('#continue-btn');
 let endGame = document.getElementById("end-game");
 let victoryBtn = document.querySelector('#victory-btn');
+let returnBtn= document.querySelector('#return-btn');
+let leaderBoard= document.querySelector('.leaderboard__profiles');
 
 /* create class maze with necessary functions */
 class Maze {
     //declare constructor
     constructor(id, level, index, tileDimension) {
-
+        //get player's name
+        this.name= document.querySelector('#player-name').value;
         //access id of element to create maze
         this.el = document.getElementById(id);
 
@@ -531,6 +534,20 @@ class Maze {
             obj.checkGoal();
 
         });
+        returnBtn.addEventListener('click',function(){
+            //if not at the goal, return
+            if (obj.player.y != obj.goal.y || obj.player.x != obj.goal.x) {
+                return;
+            }
+            
+            //get player's score
+            let temp={
+                'name':obj.name,
+                'level':obj.level_idx
+            }
+            window.localStorage.setItem(`${obj.name}`,JSON.stringify(temp));
+            
+        });
     };
 
     /* Add listener to keyboard for moving and checking goal of player */
@@ -763,5 +780,23 @@ effectArea.addEventListener("animationend", function () {
     effectItem.classList.remove('vfx-nade');
 }, false);
 
+// update leaderBoard
+function updateLeaderBoard()
+{
+    let output='';
+    let player;
+    for (let i = 0; i < localStorage.length; i++){
+        player = JSON.parse(localStorage.getItem(localStorage.key(i)));
+        output+=
+        `<article class="leaderboard__profile">   
+            <span class="leaderboard__name">${player.name}</span>
+            <span class="leaderboard__value">${player.level}</span>
+            
+        </article>`
+    }
+    leaderBoard.innerHTML=output;
+}
+
+updateLeaderBoard();
 // debug effect
 // effectPlayer.classList.add('mpg-flashlight');
