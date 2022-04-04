@@ -91,9 +91,8 @@ form button {
 
 /* center everything in game container */
 .game-container {
-  margin: auto;
-  padding-top: 5%;
-  padding-bottom: 10%;
+  margin: 0px auto;
+  padding-top: 1.5%;
 }
 
 /*

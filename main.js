@@ -608,9 +608,8 @@ function createGame(context, index, size) {
     }
 }
 
-/*disme sửa lâu vc rồi*/
 let startBtn = document.getElementById("start-game");
-startBtn.addEventListener("click", () => { 
+startBtn.addEventListener("click", () => {
     let start = document.getElementById("start");
     start.classList.remove("d-flex");
     start.classList.add("d-none");
@@ -626,19 +625,19 @@ startBtn.addEventListener("click", () => {
     let levelSelect = document.getElementById("level");
     let value = levelSelect.value;
 
-    if(value == "easy") {
+    if (value == "easy") {
         createGame(app, 0, 30);
         app.init();
     }
-    else if(value == "medium") {
+    else if (value == "medium") {
         createGame(app, 1, 25);
         app.init();
     }
-    else if(value == "hard") {
-        createGame(app, 1, 30);
+    else if (value == "hard") {
+        createGame(app, 2, 20);
         app.init();
     }
-})
+});
 
 /*
 *  make the player's effect follow the player coord on the maze
