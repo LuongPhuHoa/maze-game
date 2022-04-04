@@ -156,6 +156,7 @@ class Maze {
 
         //create a property for the DOM element
         this.player.el = null;
+        this.footstep= 0;
 
     }
 
@@ -540,7 +541,8 @@ class Maze {
             //get player's score
             let temp={
                 'name':obj.name,
-                'level':obj.level_idx
+                'level':obj.level_idx,
+                'footstep':obj.footstep
             }
             window.localStorage.setItem(`${obj.name}`,JSON.stringify(temp));
             window.location = 'index.html';
@@ -552,6 +554,7 @@ class Maze {
 
         document.addEventListener('keydown', event => {
             this.movePlayer(event);
+            this.footstep++;
             this.checkGoal();
             CenterPlayerEffect();
         });
@@ -780,8 +783,8 @@ function updateLeaderBoard()
         output+=
         `<article class="leaderboard__profile">   
             <span class="leaderboard__name">${player.name}</span>
-            <span class="leaderboard__value">${player.level}</span>
-            
+            <span class="leaderboard__value">${player.level + 1}</span>
+            <span class="leaderboard__value">${player.footstep}</span>
         </article>`
     }
     leaderBoard.innerHTML=output;
