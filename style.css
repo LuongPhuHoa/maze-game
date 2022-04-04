@@ -1,13 +1,13 @@
 @import url("https://fonts.googleapis.com/css?family=Luckiest+Guy");
 
 html,body {
-  width: 100%;
-  height: 100%;
+  width: auto;
+  height: auto;
 }
 
 body {
   font-family: "Luckiest Guy", cursive !important;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 /* Color of the links BEFORE scroll */
