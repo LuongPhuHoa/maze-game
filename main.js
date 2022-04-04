@@ -43,6 +43,42 @@ levels[0] = {
 
 levels[1] = {
     map: [
+        [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+        [1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0],
+        [0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1],
+        [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0],
+        [1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0],
+        [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0],
+        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0],
+        [0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0],
+        [1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0],
+        [0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1],
+        [0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+        [0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        [0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1],
+        [0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0],
+        [0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0],
+        [0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    ],
+    player: {
+        x: 0,
+        y: 0
+    },
+    goal: {
+        x: 22,
+        y: 18
+    },
+    items: [{ x: 2, y: 6 }, { x: 2, y: 4 }],
+    theme: 'dungeon',
+}
+
+levels[2] = {
+    map: [
         [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0],
         [0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0],
         [0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0],
@@ -572,9 +608,9 @@ function createGame(context, index, size) {
     }
 }
 
-/*disme sửa lâu vc rồi*/
+/* Start game trigger */
 let startBtn = document.getElementById("start-game");
-startBtn.addEventListener("click", () => { 
+startBtn.addEventListener("click", () => {
     let start = document.getElementById("start");
     start.classList.remove("d-flex");
     start.classList.add("d-none");
@@ -590,19 +626,98 @@ startBtn.addEventListener("click", () => {
     let levelSelect = document.getElementById("level");
     let value = levelSelect.value;
 
-    if(value == "easy") {
+    if (value == "easy") {
         createGame(app, 0, 30);
         app.init();
     }
-    else if(value == "medium") {
-        createGame(app, 1, 20);
+    else if (value == "medium") {
+        createGame(app, 1, 25);
         app.init();
     }
-})
+    else if (value == "hard") {
+        createGame(app, 2, 20);
+        app.init();
+    }
+});
 
-/*
-*  make the player's effect follow the player coord on the maze
-*/
+/* Responsize for maze */
+var bp1 = window.matchMedia("(max-width: 650px)");
+var bp2 = window.matchMedia("(max-width: 500px)");
+var bp3 = window.matchMedia("(max-width: 450px)");
+
+function responsiveMaze() {
+    let tilesDiv = document.getElementById("tiles");
+    let effectsDiv = document.getElementById("effect-area");
+    let spritesDiv = document.getElementById("sprites");
+    tilesDiv.innerHTML = '';
+    effectsDiv.innerHTML = '';
+    spritesDiv.innerHTML = '';
+
+    let levelSelect = document.getElementById("level");
+    let value = levelSelect.value;
+    if (bp3.matches) {
+        if (value == "easy") {
+            createGame(app, 0, 15);
+            app.init();
+        }
+        else if (value == "medium") {
+            createGame(app, 1, 10);
+            app.init();
+        }
+        else if (value == "hard") {
+            createGame(app, 2, 5);
+            app.init();
+        }
+    }
+    else if (bp2.matches) {
+        if (value == "easy") {
+            createGame(app, 0, 20);
+            app.init();
+        }
+        else if (value == "medium") {
+            createGame(app, 1, 15);
+            app.init();
+        }
+        else if (value == "hard") {
+            createGame(app, 2, 10);
+            app.init();
+        }
+    }
+    else if (bp1.matches) {
+        if (value == "easy") {
+            createGame(app, 0, 25);
+            app.init();
+        }
+        else if (value == "medium") {
+            createGame(app, 1, 20);
+            app.init();
+        }
+        else if (value == "hard") {
+            createGame(app, 2, 15);
+            app.init();
+        }
+    }
+    else {
+        if (value == "easy") {
+            createGame(app, 0, 30);
+            app.init();
+        }
+        else if (value == "medium") {
+            createGame(app, 1, 25);
+            app.init();
+        }
+        else if (value == "hard") {
+            createGame(app, 2, 20);
+            app.init();
+        }
+    }
+}
+
+$(window).resize(function () {
+    responsiveMaze();
+});
+
+/*  make the player's effect follow the player coord on the maze */
 function CenterPlayerEffect() {
     let playerPos = document.querySelector('.player');
 
@@ -616,9 +731,7 @@ function CenterPlayerEffect() {
     }
 
 }
-/*
-*  make the items's effect follow the items coord on the maze
-*/
+/* make the items's effect follow the items coord on the maze */
 function CenterItemEffect() {
     let playerPos = document.querySelector('.player');
     if (effectItem.classList.contains('vfx-nade')) {

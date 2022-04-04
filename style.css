@@ -91,14 +91,11 @@ form button {
 
 /* center everything in game container */
 .game-container {
-  margin: auto;
-  padding-top: 5%;
-  padding-bottom: 10%;
+  margin: 0px auto;
+  padding-top: 1.5%;
 }
 
-/*
- * Map screen
- */
+/* Map screen */
 
 .game-map {
   position: relative;
@@ -107,9 +104,7 @@ form button {
   border: 20px solid white;
 }
 
-/*
- * Output text styles
- */
+/* Output text styles */
 
 p {
   margin: 0px;
@@ -121,34 +116,7 @@ p {
   /* text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000; */
 }
 
-
-/*
- * Map on left, controls on right
- * Adapted for the mobile Medium app
- */
-#map {
-  display: flex;
-  justify-content: center;
-}
-
-/*
- * Controls
- */
-
-#controls {
-  margin-left: 10px;
-  text-align: center;
-}
-
-/*
- * Container for right and left buttons
- */
-#controls #horiz {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
+/* Goal reached */
 #success-msg {
   opacity: 0;
   transition: opacity 0.2s ease;
@@ -166,10 +134,7 @@ body.success #success-msg {
 
 
 
-/*
- * Layers and tiles are positioned absolutely
- * within coordinate system of .game-map 
- */
+/* Layers and tiles */
 div.layer,
 div.layer div {
   position: absolute;
@@ -193,9 +158,7 @@ div.layer div {
   background: #00000000;
 }
 
-/*
- * Default wall and floor styles
- */
+/* Wall and floor */
 
 .default .floor {
   background-color: #affaffa1;
@@ -205,9 +168,6 @@ div.layer div {
   background-color: white;
 }
 
-/*
- * grassland theme  
- */
 .grassland .floor {
   background-color: #7bb76d;
 }
@@ -220,9 +180,6 @@ div.layer div {
   background-color: #b2ccec;
 }
 
-/* 
- * dungeon theme
- */
 .dungeon .floor {
   background-color: darkgrey;
 }
@@ -235,35 +192,24 @@ div.layer div {
   background-color: #ab1431;
 }
 
-/*
- * player and goal are slightly smaller than tiles
- */
-.player,
-.goal {
+/* Player and goal */
+.player, .goal {
   transform-origin: center;
   transform: scale(0.85);
 }
 
-/*
- * Goal colors
- */
 .goal {
   background-color: #FFD700;
   border: 1px solid #98720b;
 }
 
-/*
- *  Player default colors
- */
 .player {
   background-color: #90ee90;
   border: 1px solid #008000;
   transition: left 0.2s ease, top 0.2s ease;
 }
 
-/*
- * Player wobbles when colliding with wall or border
- */
+/* Player wobbles when colliding wall or border */
 .player.collide {
   animation: wobble 0.5s;
   animation-iteration-count: infinite;
@@ -271,6 +217,7 @@ div.layer div {
 
 }
 
+/* Items */
 .items {
   background-color: #05ffc1;
   transform: scale(0.85);
@@ -292,9 +239,7 @@ div.layer div {
 
 }
 
-/* 
- * Wobble animation for player
- */
+/*  Wobble animation */
 @keyframes wobble {
   0% {
     transform: scale(0.85) translate(1px, 1px);
@@ -703,6 +648,8 @@ div.layer div {
   font-size: 13px;
   margin-left: 3px;
 }
+
+/* Responsive */
 
 @media (max-width: 1250px) {
   .main-container {
