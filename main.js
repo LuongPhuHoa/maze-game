@@ -646,6 +646,7 @@ startBtn.addEventListener("click", () => {
     
 });
 
+/* Victory trigger */
 victoryBtn.addEventListener("click", () => {
     window.location = 'index.html';
     endGame.classList.remove("d-none");
