@@ -73,7 +73,7 @@ input#name {
   border: none;
   outline: none;
   height: calc(2.25rem + 2px);
-  width: 150%;
+  width: 130%;
   font-size: 1rem !important;
   color: #495057!important;
 }
@@ -702,7 +702,7 @@ div.layer div {
   margin-left: 3px;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1250px) {
   .main-container {
     flex-direction: column;
   }
@@ -724,6 +724,10 @@ div.layer div {
     margin-left: auto;
     margin-right: auto;
   }
+
+  input#name {
+    width: 120%;
+  }
 }
 
 @media (min-width: 992px) {
@@ -735,7 +739,7 @@ div.layer div {
 
 @media (max-width: 750px) {
   input#name {
-    width: 125%;
+    width: 110%;
   }
 }
 
