@@ -1,13 +1,13 @@
 @import url("https://fonts.googleapis.com/css?family=Luckiest+Guy");
 
-html {
+html,body {
   width: 100%;
   height: 100%;
 }
 
 body {
   font-family: "Luckiest Guy", cursive !important;
-  width: 100%;
+  overflow: hidden;
 }
 
 /* Color of the links BEFORE scroll */
@@ -84,6 +84,7 @@ form button {
 
 /* center everything in game container */
 .game-container {
+  margin: auto;
   padding-top: 5%;
   padding-bottom: 10%;
 }
