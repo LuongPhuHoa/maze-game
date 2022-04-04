@@ -129,6 +129,8 @@ let effectPlayer = document.querySelector('#effect-player');
 let tilesArea = document.querySelector('#tiles');
 let testBtn = document.querySelector('#test-effect');
 let continueBtn = document.querySelector('#continue-btn');
+let endGame = document.getElementById("end-game");
+let victoryBtn = document.querySelector('#victory-btn');
 
 /* create class maze with necessary functions */
 class Maze {
@@ -479,7 +481,11 @@ class Maze {
 
         //if higher than max index, set to 0
         if (this.level_idx > levels.length - 1) {
-            this.level_idx = 0;
+            let maze = document.getElementById("game");
+            maze.classList.remove("d-flex");
+            maze.classList.add("d-none");
+            endGame.classList.remove("d-none");
+            endGame.classList.add("d-flex");
         }
 
         //get the level at this index
@@ -496,9 +502,6 @@ class Maze {
 
     /* Turn to a new level if goal has been reached */
     addMazeListener() {
-
-        //select the map
-        let map = this.el.querySelector('.game-map');
 
         let obj = this;
 
@@ -642,6 +645,12 @@ startBtn.addEventListener("click", () => {
     }
     responsiveMaze();
 });
+
+victoryBtn.addEventListener("click", () => {
+    window.location = 'index.html';
+    endGame.classList.remove("d-none");
+    endGame.classList.add("d-flex");
+})
 
 /* Responsize for maze */
 var bp1 = window.matchMedia("(max-width: 650px)");
