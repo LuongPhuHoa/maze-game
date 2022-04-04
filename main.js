@@ -783,7 +783,7 @@ function updateLeaderBoard()
         output+=
         `<article class="leaderboard__profile">   
             <span class="leaderboard__name">${player.name}</span>
-            <span class="leaderboard__value">${player.level + 1}</span>
+            <span class="leaderboard__value">Level ${player.level + 1}</span>
             <span class="leaderboard__value">${player.footstep}</span>
         </article>`
     }
