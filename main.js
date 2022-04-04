@@ -36,7 +36,7 @@ levels[0] = {
         y: 18
     },
     //set the position of goal depending on the map array, also using array to declare more items
-    items: [{ x: 2, y: 6 }, { x: 8, y: 4 }, { x: 10, y: 4 }],
+    items: [{ x: 3, y: 4 }, { x: 12, y: 16 }, { x: 16, y: 8 }],
     //choose theme to change style of map and its elements
     theme: 'default',
 };
@@ -75,7 +75,7 @@ levels[1] = {
         x: 22,
         y: 22
     },
-    items: [{ x: 2, y: 6 }, { x: 2, y: 4 }],
+    items: [{ x: 12, y: 1 }, { x: 4, y: 8 }, { x: 12, y: 10 }, { x: 21, y: 14 }, { x: 8, y: 20 }],
     theme: 'dungeon',
 }
 
@@ -119,7 +119,7 @@ levels[2] = {
         x: 28,
         y: 28
     },
-    items: [{ x: 2, y: 6 }, { x: 2, y: 4 }],
+    items: [{ x: 16, y: 1 }, { x: 3, y: 16 }, { x: 7, y: 12 }, { x: 17, y: 14 }, { x: 10, y: 27 }, { x: 21, y: 22 }, { x: 26, y: 18 }],
     theme: 'grassland',
 }
 
