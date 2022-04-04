@@ -735,6 +735,12 @@ div.layer div {
 
 @media (max-width: 750px) {
   input#name {
+    width: 125%;
+  }
+}
+
+@media (max-width: 650px) {
+  input#name {
     width: 100%;
   }
 }
