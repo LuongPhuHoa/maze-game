@@ -608,6 +608,7 @@ function createGame(context, index, size) {
     }
 }
 
+/* Start game trigger */
 let startBtn = document.getElementById("start-game");
 startBtn.addEventListener("click", () => {
     let start = document.getElementById("start");
@@ -639,6 +640,7 @@ startBtn.addEventListener("click", () => {
     }
 });
 
+/* Responsize for maze */
 var bp1 = window.matchMedia("(max-width: 650px)");
 var bp2 = window.matchMedia("(max-width: 500px)");
 var bp3 = window.matchMedia("(max-width: 450px)");
@@ -715,9 +717,7 @@ $(window).resize(function () {
     responsiveMaze();
 });
 
-/*
-*  make the player's effect follow the player coord on the maze
-*/
+/*  make the player's effect follow the player coord on the maze */
 function CenterPlayerEffect() {
     let playerPos = document.querySelector('.player');
 
@@ -731,9 +731,7 @@ function CenterPlayerEffect() {
     }
 
 }
-/*
-*  make the items's effect follow the items coord on the maze
-*/
+/* make the items's effect follow the items coord on the maze */
 function CenterItemEffect() {
     let playerPos = document.querySelector('.player');
     if (effectItem.classList.contains('vfx-nade')) {
