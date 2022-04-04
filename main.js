@@ -39,6 +39,7 @@ levels[0] = {
     items: [{ x: 3, y: 4 }, { x: 12, y: 16 }, { x: 16, y: 8 }],
     //choose theme to change style of map and its elements
     theme: 'default',
+    playerEffect: '',
 };
 
 levels[1] = {
@@ -77,6 +78,7 @@ levels[1] = {
     },
     items: [{ x: 12, y: 1 }, { x: 4, y: 8 }, { x: 12, y: 10 }, { x: 21, y: 14 }, { x: 8, y: 20 }],
     theme: 'dungeon',
+    playerEffect: 'flashlight',
 }
 
 levels[2] = {
@@ -121,6 +123,7 @@ levels[2] = {
     },
     items: [{ x: 16, y: 1 }, { x: 3, y: 16 }, { x: 7, y: 12 }, { x: 17, y: 14 }, { x: 10, y: 27 }, { x: 21, y: 22 }, { x: 26, y: 18 }],
     theme: 'grassland',
+    playerEffect: 'memory',
 }
 
 let effectArea = document.querySelector('#effect-area');
@@ -444,7 +447,7 @@ class Maze {
 
         for (let i = 0; i < this.items.length; i++) {
             if (this.player.y == this.items[i].y && this.player.x == this.items[i].x) {
-                let randomNum = Math.floor(Math.random() * 3)
+                let randomNum = Math.floor(Math.random() * 3);
                 this.randomItem(randomNum);
                 if (randomNum === 2) {
                     this.removeWall(this.items[i].x, this.items[i].y);
@@ -618,14 +621,27 @@ class Maze {
 function createGame(context, index, size) {
     context.init = function () {
 
+        //clear player effect
+        effectPlayer.classList.remove("mpg-flashlight");
+        effectPlayer.classList.remove("mpg-memory");
+        
+        
+        //add new player effect 
+        effectPlayer.classList.add("mpg-"+levels[index].playerEffect);
+        
+
         //create an object of maze
         let myGame = new Maze('game-container-1', levels[index], index, size);
 
+        
         //create multi-level
         myGame.placeLevel();
 
         //add movement listeners
         myGame.addMovementListeners();
+
+        //centered new player effect 
+        CenterPlayerEffect();
 
     }
 }
@@ -670,10 +686,8 @@ var bp3 = window.matchMedia("(max-width: 450px)");
 
 function responsiveMaze() {
     let tilesDiv = document.getElementById("tiles");
-    let effectsDiv = document.getElementById("effect-area");
     let spritesDiv = document.getElementById("sprites");
     tilesDiv.innerHTML = '';
-    effectsDiv.innerHTML = '';
     spritesDiv.innerHTML = '';
 
     let levelSelect = document.getElementById("level");
@@ -738,33 +752,41 @@ function responsiveMaze() {
 
 $(window).resize(function () {
     responsiveMaze();
+    CenterPlayerEffect(); // centered player's effect when resize
 });
 
 /*  make the player's effect follow the player coord on the maze */
 function CenterPlayerEffect() {
-    let playerPos = document.querySelector('.player');
+
+    let playerPosX = parseInt(document.querySelector('.player').style.top.replace(/px/, ""));
+    let playerPosY = parseInt(document.querySelector('.player').style.left.replace(/px/, ""));
+    let playerWidth = document.querySelector('.player').style.width.replace(/px/, "");
+    let flashlightPos = document.querySelector('.mpg-flashlight');
+    let memoryPos = document.querySelector('.mpg-memory');
 
     if (effectPlayer.classList.contains('mpg-flashlight')) {
-        document.querySelector('.mpg-flashlight').style.top = (parseInt(playerPos.style.top.replace(/px/, "")) - 513) + "px";
-        document.querySelector('.mpg-flashlight').style.left = (parseInt(playerPos.style.left.replace(/px/, "")) - 513) + "px";
+        flashlightPos.style.top = (playerPosX - (playerWidth * 5 - 990)) + "px";
+        flashlightPos.style.left = (playerPosY - (playerWidth * 5 - 990)) + "px";
     }
     else if (effectPlayer.classList.contains('mpg-memory')) {
-        document.querySelector('.mpg-memory').style.top = (parseInt(playerPos.style.top.replace(/px/, "")) - 91) + "px";
-        document.querySelector('.mpg-memory').style.left = (parseInt(playerPos.style.left.replace(/px/, "")) - 91) + "px";
+        memoryPos.style.top = (playerPosX - playerWidth * 5 + 11) + "px";
+        memoryPos.style.left = (playerPosY - playerWidth * 5 + 11) + "px";
     }
 
 }
 /* make the items's effect follow the items coord on the maze */
 function CenterItemEffect() {
-    let playerPos = document.querySelector('.player');
+    let playerPosX = parseInt(document.querySelector('.player').style.top.replace(/px/, ""));
+    let playerPosY = parseInt(document.querySelector('.player').style.left.replace(/px/, ""));
+    let playerWidth = document.querySelector('.player').style.width.replace(/px/, "");
+    let itemOffset = playerWidth * 2 - playerWidth * 0.3;
+    console.log(itemOffset);
     if (effectItem.classList.contains('vfx-nade')) {
-        document.querySelector('.vfx-nade').style.top = (parseInt(playerPos.style.top.replace(/px/, "")) - 50) + "px";
-        document.querySelector('.vfx-nade').style.left = (parseInt(playerPos.style.left.replace(/px/, "")) - 50) + "px";
+        document.querySelector('.vfx-nade').style.top = (playerPosX - 40) + "px";
+        document.querySelector('.vfx-nade').style.left = (playerPosY - 40) + "px";
     }
 }
 
-// add listener to player/item effect when window resized
-window.addEventListener("resize", CenterPlayerEffect);
 // remove item effect when its end 
 effectArea.addEventListener("animationend", function () {
     console.log("vfx class cleared");
