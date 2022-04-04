@@ -117,6 +117,7 @@ p {
   margin-right: 50px;
   padding: 10px;
   text-align: justify;
+  text-justify: inter-word;
   /* text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000; */
 }
 
