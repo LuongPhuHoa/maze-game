@@ -557,11 +557,11 @@ class Maze {
 }
 
 //function create the game
-function createGame(context, index) {
+function createGame(context, index, size) {
     context.init = function () {
 
         //create an object of maze
-        let myGame = new Maze('game-container-1', levels[index], index, 25);
+        let myGame = new Maze('game-container-1', levels[index], index, size);
 
         //create multi-level
         myGame.placeLevel();
@@ -591,11 +591,11 @@ startBtn.addEventListener("click", () => {
     let value = levelSelect.value;
 
     if(value == "easy") {
-        createGame(app, 0);
+        createGame(app, 0, 30);
         app.init();
     }
     else if(value == "medium") {
-        createGame(app, 1);
+        createGame(app, 1, 20);
         app.init();
     }
 })
