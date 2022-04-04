@@ -128,9 +128,6 @@ let effectItem = document.querySelector('#effect-item');
 let effectPlayer = document.querySelector('#effect-player');
 let tilesArea = document.querySelector('#tiles');
 let testBtn = document.querySelector('#test-effect');
-let continueBtn = document.querySelector('#continue-btn');
-let endGame = document.getElementById("end-game");
-let victoryBtn = document.querySelector('#victory-btn');
 let returnBtn= document.querySelector('#return-btn');
 let leaderBoard= document.querySelector('.leaderboard__profiles');
 
@@ -508,32 +505,32 @@ class Maze {
 
         let obj = this;
 
-        //if continue button is clicked, change levels
-        continueBtn.addEventListener('click', function () {
+        // //if continue button is clicked, change levels
+        // continueBtn.addEventListener('click', function () {
 
-            //if not at the goal, return
-            if (obj.player.y != obj.goal.y || obj.player.x != obj.goal.x) {
-                return;
-            }
+        //     //if not at the goal, return
+        //     if (obj.player.y != obj.goal.y || obj.player.x != obj.goal.x) {
+        //         return;
+        //     }
 
-            //change level by reset new game properties
-            obj.changeLevel();
+        //     //change level by reset new game properties
+        //     obj.changeLevel();
 
-            //get the layers then clear tiles and sprites
-            let layers = obj.el.querySelectorAll('.layer');
-            layers.forEach(layer => {
-                if (layer.id != 'effect-area') {
-                    layer.innerHTML = '';
-                }
-            });
+        //     //get the layers then clear tiles and sprites
+        //     let layers = obj.el.querySelectorAll('.layer');
+        //     layers.forEach(layer => {
+        //         if (layer.id != 'effect-area') {
+        //             layer.innerHTML = '';
+        //         }
+        //     });
 
-            //create new level maze
-            obj.placeLevel();
+        //     //create new level maze
+        //     obj.placeLevel();
 
-            //check the goal
-            obj.checkGoal();
+        //     //check the goal
+        //     obj.checkGoal();
 
-        });
+        // });
         returnBtn.addEventListener('click',function(){
             //if not at the goal, return
             if (obj.player.y != obj.goal.y || obj.player.x != obj.goal.x) {
@@ -546,7 +543,7 @@ class Maze {
                 'level':obj.level_idx
             }
             window.localStorage.setItem(`${obj.name}`,JSON.stringify(temp));
-            
+            window.location = 'index.html';
         });
     };
 
@@ -662,13 +659,6 @@ startBtn.addEventListener("click", () => {
     }
     
 });
-
-/* Victory trigger */
-victoryBtn.addEventListener("click", () => {
-    window.location = 'index.html';
-    endGame.classList.remove("d-none");
-    endGame.classList.add("d-flex");
-})
 
 /* Responsize for maze */
 var bp1 = window.matchMedia("(max-width: 650px)");
