@@ -1,10 +1,11 @@
 @import url("https://fonts.googleapis.com/css?family=Luckiest+Guy");
 
+html,body {
+  width: 100%;
+}
 
 body {
-  position: relative;
-  height: 100vh;
-  overflow: hidden;
+  position: absolute;
   font-family: "Luckiest Guy", cursive !important;
 }
 
@@ -46,9 +47,13 @@ button.navbar-toggler {
   /* background-position: center; */
   background-repeat: no-repeat;
   background-attachment: fixed;
-  height: 100vh;
+  height: 100%;
+  width: 100%;
 }
 
+.main-container {
+  padding-top: 68px;
+}
 
 form.form-inline {
   padding: 13px;
@@ -62,7 +67,7 @@ input#name {
   height: calc(2.25rem + 2px);
   width: 100%;
   font-size: 1rem !important;
-  color: #495057;
+  color: #495057!important;
 }
 
 input {
@@ -72,25 +77,16 @@ input {
 label {
   color: #1f2225;
 }
-
-/*
- * General Styling
- */
-body {
-  font-family: Calibri;
-  transition: 0.2s ease;
-  text-align: center;
-}
-
-body.success {
-  background-color: #b7f0b7;
-  transition: 0.2s ease;
+form button {
+  width: 100%;
 }
 
 /* center everything in game container */
 .game-container {
-  margin: auto;
   padding-top: 5%;
+  height: 100%;
+  width: 100%;
+  padding-bottom: 10%;
 }
 
 /*
@@ -109,8 +105,10 @@ body.success {
  */
 
 p {
-  margin: 10px 0px;
-  padding: 0px;
+  margin: 0px;
+  margin-top: 10px;
+  margin-right: 50px;
+  padding: 10px;
   /* text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000; */
 }
 
@@ -696,3 +694,21 @@ div.layer div {
   font-size: 13px;
   margin-left: 3px;
 }
+
+@media (max-width: 1200px) {
+  .main-container {
+    flex-direction: column;
+  }
+
+  .container {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 992px) {
+  .col-lg-6 {
+    flex: 0 0 50%;
+    max-width: 100%;
+  }
+}
+
