@@ -36,7 +36,7 @@ levels[0] = {
         y: 18
     },
     //set the position of goal depending on the map array, also using array to declare more items
-    items: [{ x: 0, y: 6 }, { x: 2, y: 4 }, { x: 10, y: 4 }],
+    items: [{ x: 3, y: 4 }, { x: 12, y: 16 }, { x: 16, y: 8 }],
     //choose theme to change style of map and its elements
     theme: 'default',
 };
@@ -50,21 +50,21 @@ levels[1] = {
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0],
         [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1],
         [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0],
-        [1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0],
+        [1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0],
         [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0],
-        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0],
-        [0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0],
-        [1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0],
+        [0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0],
+        [0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+        [1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0],
         [0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0],
-        [0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1],
-        [0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-        [0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        [0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0],
+        [0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+        [0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
         [0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1],
-        [0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0],
+        [0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0],
         [0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0],
         [0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0],
-        [0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0],
+        [0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0],
         [0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
     ],
     player: {
@@ -75,7 +75,7 @@ levels[1] = {
         x: 22,
         y: 22
     },
-    items: [{ x: 2, y: 6 }, { x: 2, y: 4 }],
+    items: [{ x: 12, y: 1 }, { x: 4, y: 8 }, { x: 12, y: 10 }, { x: 21, y: 14 }, { x: 8, y: 20 }],
     theme: 'dungeon',
 }
 
@@ -119,7 +119,7 @@ levels[2] = {
         x: 28,
         y: 28
     },
-    items: [{ x: 2, y: 6 }, { x: 2, y: 4 }],
+    items: [{ x: 16, y: 1 }, { x: 3, y: 16 }, { x: 7, y: 12 }, { x: 17, y: 14 }, { x: 10, y: 27 }, { x: 21, y: 22 }, { x: 26, y: 18 }],
     theme: 'grassland',
 }
 
@@ -129,6 +129,8 @@ let effectPlayer = document.querySelector('#effect-player');
 let tilesArea = document.querySelector('#tiles');
 let testBtn = document.querySelector('#test-effect');
 let continueBtn = document.querySelector('#continue-btn');
+let endGame = document.getElementById("end-game");
+let victoryBtn = document.querySelector('#victory-btn');
 
 /* create class maze with necessary functions */
 class Maze {
@@ -479,7 +481,11 @@ class Maze {
 
         //if higher than max index, set to 0
         if (this.level_idx > levels.length - 1) {
-            this.level_idx = 0;
+            let maze = document.getElementById("game");
+            maze.classList.remove("d-flex");
+            maze.classList.add("d-none");
+            endGame.classList.remove("d-none");
+            endGame.classList.add("d-flex");
         }
 
         //get the level at this index
@@ -496,9 +502,6 @@ class Maze {
 
     /* Turn to a new level if goal has been reached */
     addMazeListener() {
-
-        //select the map
-        let map = this.el.querySelector('.game-map');
 
         let obj = this;
 
@@ -640,7 +643,15 @@ startBtn.addEventListener("click", () => {
         createGame(app, 2, 20);
         app.init();
     }
+    
 });
+
+/* Victory trigger */
+victoryBtn.addEventListener("click", () => {
+    window.location = 'index.html';
+    endGame.classList.remove("d-none");
+    endGame.classList.add("d-flex");
+})
 
 /* Responsize for maze */
 var bp1 = window.matchMedia("(max-width: 650px)");
@@ -663,11 +674,11 @@ function responsiveMaze() {
             app.init();
         }
         else if (value == "medium") {
-            createGame(app, 1, 10);
+            createGame(app, 1, 12);
             app.init();
         }
         else if (value == "hard") {
-            createGame(app, 2, 5);
+            createGame(app, 2, 10);
             app.init();
         }
     }
@@ -681,7 +692,7 @@ function responsiveMaze() {
             app.init();
         }
         else if (value == "hard") {
-            createGame(app, 2, 10);
+            createGame(app, 2, 12);
             app.init();
         }
     }
