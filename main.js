@@ -639,6 +639,82 @@ startBtn.addEventListener("click", () => {
     }
 });
 
+var bp1 = window.matchMedia("(max-width: 650px)");
+var bp2 = window.matchMedia("(max-width: 500px)");
+var bp3 = window.matchMedia("(max-width: 450px)");
+
+function responsiveMaze() {
+    let tilesDiv = document.getElementById("tiles");
+    let effectsDiv = document.getElementById("effect-area");
+    let spritesDiv = document.getElementById("sprites");
+    tilesDiv.innerHTML = '';
+    effectsDiv.innerHTML = '';
+    spritesDiv.innerHTML = '';
+
+    let levelSelect = document.getElementById("level");
+    let value = levelSelect.value;
+    if (bp3.matches) {
+        if (value == "easy") {
+            createGame(app, 0, 15);
+            app.init();
+        }
+        else if (value == "medium") {
+            createGame(app, 1, 10);
+            app.init();
+        }
+        else if (value == "hard") {
+            createGame(app, 2, 5);
+            app.init();
+        }
+    }
+    else if (bp2.matches) {
+        if (value == "easy") {
+            createGame(app, 0, 20);
+            app.init();
+        }
+        else if (value == "medium") {
+            createGame(app, 1, 15);
+            app.init();
+        }
+        else if (value == "hard") {
+            createGame(app, 2, 10);
+            app.init();
+        }
+    }
+    else if (bp1.matches) {
+        if (value == "easy") {
+            createGame(app, 0, 25);
+            app.init();
+        }
+        else if (value == "medium") {
+            createGame(app, 1, 20);
+            app.init();
+        }
+        else if (value == "hard") {
+            createGame(app, 2, 15);
+            app.init();
+        }
+    }
+    else {
+        if (value == "easy") {
+            createGame(app, 0, 30);
+            app.init();
+        }
+        else if (value == "medium") {
+            createGame(app, 1, 25);
+            app.init();
+        }
+        else if (value == "hard") {
+            createGame(app, 2, 20);
+            app.init();
+        }
+    }
+}
+
+$(window).resize(function () {
+    responsiveMaze();
+});
+
 /*
 *  make the player's effect follow the player coord on the maze
 */
