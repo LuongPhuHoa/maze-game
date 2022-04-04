@@ -664,11 +664,11 @@ function responsiveMaze() {
             app.init();
         }
         else if (value == "medium") {
-            createGame(app, 1, 10);
+            createGame(app, 1, 12);
             app.init();
         }
         else if (value == "hard") {
-            createGame(app, 2, 5);
+            createGame(app, 2, 10);
             app.init();
         }
     }
@@ -682,7 +682,7 @@ function responsiveMaze() {
             app.init();
         }
         else if (value == "hard") {
-            createGame(app, 2, 10);
+            createGame(app, 2, 12);
             app.init();
         }
     }
