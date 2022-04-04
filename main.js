@@ -1,5 +1,5 @@
 let app = {};
-
+let playerArr=[];
 let levels = [];
 levels[0] = {
     //this map is used to store maze
@@ -778,17 +778,29 @@ function updateLeaderBoard()
 {
     let output='';
     let player;
-    for (let i = 0; i < localStorage.length; i++){
-        player = JSON.parse(localStorage.getItem(localStorage.key(i)));
-        output+=
-        `<article class="leaderboard__profile">   
-            <span class="leaderboard__name">${player.name}</span>
-            <span class="leaderboard__value">Level ${player.level + 1}</span>
-            <span class="leaderboard__value">${player.footstep}</span>
-        </article>`
-    }
+    Object.keys(localStorage).forEach(function(key){
+        player = JSON.parse(localStorage.getItem(key));
+        playerArr.push(player);
+        console.log(playerArr);
+    });
+
+    playerArr.sort((a, b) => (a.level < b.level) ? 1 : (a.level=== b.level) ? ((a.footstep > b.footstep) ? 1 : -1) : -1 );
+    console.log(playerArr);
+    
+    console.log(playerArr);
+
+    playerArr.forEach(function(player){
+            output+=
+            `<article class="leaderboard__profile">   
+                <span class="leaderboard__name">${player.name}</span>
+                <span class="leaderboard__value">Level ${player.level + 1}</span>
+                <span class="leaderboard__value">${player.footstep}</span>
+            </article>`
+    });
+    
     leaderBoard.innerHTML=output;
 }
+
 
 updateLeaderBoard();
 // debug effect
