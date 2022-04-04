@@ -65,6 +65,7 @@ button.navbar-toggler {
 form.form-inline {
   padding: 13px;
   margin: 0px;
+  justify-content: space-between;
 }
 
 input#name {
@@ -72,7 +73,7 @@ input#name {
   border: none;
   outline: none;
   height: calc(2.25rem + 2px);
-  width: 100%;
+  width: 150%;
   font-size: 1rem !important;
   color: #495057!important;
 }
@@ -709,6 +710,20 @@ div.layer div {
   .container {
     max-width: 100%;
   }
+
+  #main-banner h1 {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #main-banner p {
+    margin-right: 0;
+  }
+
+  .enter-game {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 @media (min-width: 992px) {
@@ -718,3 +733,8 @@ div.layer div {
   }
 }
 
+@media (max-width: 750px) {
+  input#name {
+    width: 100%;
+  }
+}
