@@ -436,7 +436,7 @@ class Maze {
                 effectArea.classList.add('vfx-spook');
                 break;
             case 2:
-                effectItem.classList.add('vfx-nade');
+                // effectItem.classList.add('vfx-nade');
                 break;
         }
 
@@ -758,41 +758,53 @@ $(window).resize(function () {
 /*  make the player's effect follow the player coord on the maze */
 function CenterPlayerEffect() {
 
-    let playerPosX = parseInt(document.querySelector('.player').style.top.replace(/px/, ""));
-    let playerPosY = parseInt(document.querySelector('.player').style.left.replace(/px/, ""));
+    let playerPosY = parseInt(document.querySelector('.player').style.top.replace(/px/, ""));
+    let playerPosX = parseInt(document.querySelector('.player').style.left.replace(/px/, ""));
     let playerWidth = document.querySelector('.player').style.width.replace(/px/, "");
     let flashlightPos = document.querySelector('.mpg-flashlight');
     let memoryPos = document.querySelector('.mpg-memory');
 
     if (effectPlayer.classList.contains('mpg-flashlight')) {
-        flashlightPos.style.top = (playerPosX - (playerWidth * 5 - 990)) + "px";
-        flashlightPos.style.left = (playerPosY - (playerWidth * 5 - 990)) + "px";
+        flashlightPos.style.left = (playerPosX - (playerWidth * 5 + 990)) + "px";
+        flashlightPos.style.top = (playerPosY - (playerWidth * 5 + 990)) + "px";
+
     }
     else if (effectPlayer.classList.contains('mpg-memory')) {
-        memoryPos.style.top = (playerPosX - playerWidth * 5 + 11) + "px";
-        memoryPos.style.left = (playerPosY - playerWidth * 5 + 11) + "px";
+        memoryPos.style.left = (playerPosX - playerWidth * 5 + 11) + "px";
+        memoryPos.style.top = (playerPosY - playerWidth * 5 + 11) + "px";
+
     }
 
 }
-/* make the items's effect follow the items coord on the maze */
-function CenterItemEffect() {
-    let playerPosX = parseInt(document.querySelector('.player').style.top.replace(/px/, ""));
-    let playerPosY = parseInt(document.querySelector('.player').style.left.replace(/px/, ""));
-    let playerWidth = document.querySelector('.player').style.width.replace(/px/, "");
-    let itemOffset = playerWidth * 2 - playerWidth * 0.3;
-    console.log(itemOffset);
-    if (effectItem.classList.contains('vfx-nade')) {
-        document.querySelector('.vfx-nade').style.top = (playerPosX - 40) + "px";
-        document.querySelector('.vfx-nade').style.left = (playerPosY - 40) + "px";
-    }
-}
+
+// pd 75 w 30 offX&Y 60 
+// pd 62.5 w 25 offX 75 offY 50
+// pd 50 w 20 offX 60 offY 40
+// pd 37.5 w 15 offX 45 offY 30
+
+
+// /* make the items's effect follow the items coord on the maze */
+// function CenterItemEffect() {
+//     let playerPosY = parseInt(document.querySelector('.player').style.top.replace(/px/, ""));
+//     let playerPosX = parseInt(document.querySelector('.player').style.left.replace(/px/, ""));
+//     let nade = document.querySelector('.vfx-nade')
+//     let playerWidth = document.querySelector('.player').style.width.replace(/px/, "");
+//     let itemOffsetX = 45;//playerWidth * 2;
+//     let itemOffsetY = 30;
+//     if (effectItem.classList.contains('vfx-nade')) {
+//         nade.style.padding = "37.5px";
+//         nade.style.left = (playerPosX - itemOffsetX) + "px";
+//         nade.style.top = (playerPosY - itemOffsetY) + "px";
+//         console.log(nade.style.top);
+//         console.log(nade.style.left);
+//     }
+// }
 
 // remove item effect when its end 
 effectArea.addEventListener("animationend", function () {
     console.log("vfx class cleared");
     effectArea.classList.remove('vfx-flashbang');
     effectArea.classList.remove('vfx-spook');
-    effectItem.classList.remove('vfx-nade');
 }, false);
 
 // update leaderBoard
@@ -825,5 +837,3 @@ function updateLeaderBoard()
 
 
 updateLeaderBoard();
-// debug effect
-// effectPlayer.classList.add('mpg-flashlight');
