@@ -765,8 +765,8 @@ function CenterPlayerEffect() {
     let memoryPos = document.querySelector('.mpg-memory');
 
     if (effectPlayer.classList.contains('mpg-flashlight')) {
-        flashlightPos.style.left = (playerPosX - (playerWidth * 5 + 990)) + "px";
-        flashlightPos.style.top = (playerPosY - (playerWidth * 5 + 990)) + "px";
+        flashlightPos.style.left = (playerPosX - (playerWidth * 5 + 1990)) + "px";
+        flashlightPos.style.top = (playerPosY - (playerWidth * 5 + 1990)) + "px";
 
     }
     else if (effectPlayer.classList.contains('mpg-memory')) {

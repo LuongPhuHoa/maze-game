@@ -486,7 +486,7 @@ div.layer div {
   border-radius: 50%;
   position: absolute;
   background-color: #fff7d338;
-  border: 1000px solid black;
+  border: 2000px solid black;
   pointer-events: none;
 }
 
