@@ -1,3 +1,7 @@
+//If leaderboard not working
+//Run this
+//localstorage.clear();
+
 let app = {};
 let playerArr=[];
 let levels = [];
