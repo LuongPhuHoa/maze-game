@@ -682,6 +682,10 @@ div.layer div {
   margin-left: 3px;
 }
 
+.howtoplay-area {
+  background-color: rgba(37, 150, 190, 0.7);
+}
+
 /* Responsive */
 
 @media (max-width: 1250px) {
