@@ -280,41 +280,41 @@ div.layer div {
   background-color: white;
 }
 
-.grassland .game-map {
+.hard .game-map {
   position: relative;
   border-radius: 25px;
   box-sizing: content-box;
   border: 20px solid #0f0644;
 }
 
-.grassland .floor {
+.hard .floor {
   background-color: #affaffa1;
 }
 
-.grassland .wall {
+.hard .wall {
   background-color: #0f0644;
 }
 
-.grassland .player {
+.hard .player {
   background-color: #ab1431;
 }
 
-.dungeon .game-map {
+.medium .game-map {
   position: relative;
   border-radius: 25px;
   box-sizing: content-box;
   border: 20px solid #df81df;
 }
 
-.dungeon .floor {
+.medium .floor {
   background-color: #fcd4fc28;
 }
 
-.dungeon .wall {
+.medium .wall {
   background-color: #df81df;
 }
 
-.dungeon .player {
+.medium .player {
   background-color: white;
 }
 
@@ -326,8 +326,10 @@ div.layer div {
 }
 
 .goal {
-  background-color: #FFD700;
-  border: 1px solid #98720b;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Flag_icon_red_4.svg/547px-Flag_icon_red_4.svg.png");
+  background-position: center;
+  background-attachment:fixed;
+  background-size: cover;
 }
 
 .player {
@@ -346,7 +348,10 @@ div.layer div {
 
 /* Items */
 .items {
-  background-color: #05ffc1;
+  background-image: url("https://community.cloudflare.steamstatic.com/economy/image/QbiH4QbBm-bLR-ZojzEKdc1jkFsuLlxKSeEmDbCFA3wiKf9ZGahnZ-wmgmG8hA26OZFaUbCE1Brl/360fx360f");
+  background-position: center;
+  background-attachment:fixed;
+  background-size: cover;
   transform: scale(0.85);
 }
 
