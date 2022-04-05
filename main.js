@@ -453,7 +453,7 @@ class Maze {
                     this.removeWall(this.items[i].x, this.items[i].y);
 
                 }
-                CenterItemEffect();
+                // CenterItemEffect();
                 // remove item and sprites after used
                 this.items.splice(i, 1);
                 document.querySelector('#sprites').childNodes[i].remove();
