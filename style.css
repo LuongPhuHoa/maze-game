@@ -460,7 +460,8 @@ div.layer div {
 
 @keyframes spook {
   0% {
-    background-image: url("https://filmdaily.co/wp-content/uploads/2020/10/amongus-main.jpg")
+    background-image: url("https://gamek.mediacdn.vn/133514250583805952/2021/5/21/photo-1-162158816590838686001.jpg");
+    background-position: center;
   }
 
   100% {
