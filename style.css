@@ -280,28 +280,42 @@ div.layer div {
   background-color: white;
 }
 
+.grassland .game-map {
+  position: relative;
+  border-radius: 25px;
+  box-sizing: content-box;
+  border: 20px solid #0f0644;
+}
+
 .grassland .floor {
-  background-color: #7bb76d;
+  background-color: #affaffa1;
 }
 
 .grassland .wall {
-  background-color: #806d51;
+  background-color: #0f0644;
 }
 
 .grassland .player {
-  background-color: #b2ccec;
+  background-color: #ab1431;
+}
+
+.dungeon .game-map {
+  position: relative;
+  border-radius: 25px;
+  box-sizing: content-box;
+  border: 20px solid #df81df;
 }
 
 .dungeon .floor {
-  background-color: darkgrey;
+  background-color: #fcd4fc28;
 }
 
 .dungeon .wall {
-  background-color: #9c649c;
+  background-color: #df81df;
 }
 
 .dungeon .player {
-  background-color: #ab1431;
+  background-color: white;
 }
 
 /* Player and goal */
